@@ -1,0 +1,106 @@
+﻿
+@using System.Text.RegularExpressions
+@using DataEntry_Helpers
+@model Models.WebsiteServiceProvider
+
+@{
+    var selectedLocation = Model.Locations.Find(l => l.Id == int.Parse(Request.Params["location"]));
+    var provider = (selectedLocation != null) ? new HtmlString("{  name: \"" + Model.Name + "\", " + "address: \"" + selectedLocation.AddressDisplay + "\" }") :  new HtmlString(string.Empty);
+}
+
+<div class="page-header clearfix page-header-fixed">
+    <div class="pull-left">
+        <h3 id="sectionName">@Model.Name</h3>
+    </div>
+</div>
+
+<div class="mapListWrapper" style="height: 100%">
+    <div class="mapImage" style=""><div id='myMap' style="position: relative; height: 300px;"></div></div>
+    <div class="mapList" style="height: 100%">
+        <div>@Model.Description</div>
+        @if (selectedLocation != null)
+        {
+            if (selectedLocation.Contact.Website != null)
+            {
+                <br/>
+                <div><a href="@selectedLocation.Contact.Website">@selectedLocation.Contact.Website</a>
+                </div>
+            }
+            <div>
+                <div class="">
+                    <h3>Contact Information</h3>
+                </div>
+                <div class="pull-right" style="">
+                    <a id="directionsLink" href="#" target="_blank">Get Directions</a>
+                </div>
+                @if (!string.IsNullOrEmpty(@selectedLocation.Name))
+                {
+                    <h4>@selectedLocation.Name</h4>
+                }
+                <div>@selectedLocation.Street</div>
+                <div>@selectedLocation.City, @selectedLocation.StateIdString @selectedLocation.Zip </div>
+                @if (!string.IsNullOrEmpty(selectedLocation.Contact.PhoneNumber))
+                {
+                    <div><strong>Phone:</strong> @Regex.Replace(selectedLocation.Contact.PhoneNumber.Replace("-", ""), @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3")</div>
+                }
+                @if (!string.IsNullOrEmpty(selectedLocation.Contact.HelpLine))
+                {
+                    <div><strong>Help Line:</strong> @Regex.Replace(selectedLocation.Contact.HelpLine.Replace("-", ""), @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3")</div>
+                }
+                @if (!string.IsNullOrEmpty(selectedLocation.Contact.Email))
+                {
+                    <div><strong>Email:</strong> <a href="mailto:@selectedLocation.Contact.Email">@selectedLocation.Contact.Email</a>
+                    </div>
+                }
+
+            </div>
+
+            <h3>Services</h3>
+
+            <div>
+                @if (ViewBag.AllCategories != null)
+                {
+                    foreach (var category in ViewBag.AllCategories)
+                    {
+                        if (!Model.Services.ServiceAreas.Contains(category.Id))
+                        {
+                            continue;
+                        }
+                        <div>@category.Name</div>
+                    }
+                }
+            </div>
+
+            if (Model.Locations.Count > 1)
+            {
+                <h3>Other Locations</h3>
+                foreach (var location in Model.Locations)
+                {
+                    if (location.Id != int.Parse(Request.Params["location"]))
+                    {
+                        <a href="@Url.Action("Details", new {id = Model.Id, location = location.Id})">
+                            <div>
+                                @if (!string.IsNullOrEmpty(@location.Name))
+                                {
+                                    <h4>@location.Name</h4>
+                                }
+                                <div>@location.Street</div>
+                                <div>@location.City, @location.StateIdString @location.Zip </div>
+                            </div>
+                        </a>
+                    }
+                }
+            }
+        }
+    </div>
+</div>
+
+
+<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+        bingMap.setupSinglePointMap('myMap', @provider, "directionsLink");
+    });
+</script>
+

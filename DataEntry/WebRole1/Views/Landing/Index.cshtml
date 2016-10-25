@@ -1,0 +1,193 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Aviator</title>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,300,500,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700,300" rel="stylesheet" type="text/css">
+
+    @Styles.Render("~/Content/LandingPage.css")
+    @Styles.Render("~/Content/bootstrap.css")
+    @Styles.Render("~/Content/font-awesome.css")
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-85006390-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+</head>
+<body>
+    <header id="top" class="container-fluid">
+        <div id="navigation" class="row">
+            <div id="logo-holder" class="col-sm-6">
+                <a href="#top">
+                    <img height="68" width="300" src="~/Content/Images/AVIATOR_Logo_WHITE.png" alt="aviator logo" />
+                </a>
+            </div>
+            <nav class="col-sm-6">
+                <span id="app-link"><a href="@Url.Action("Index", "Web")">ACCESS RESOURCES NOW</a></span> <span class="nav-separator">|</span> <span id="sublinks"><a href="#about">ABOUT</a> | <a href="#contact-bar">CONTACT</a></span>
+            </nav>
+        </div>
+        <div class="row" id="platforms-header-row">
+            <div class="col-sm-12">
+                AVAILABLE ON
+            </div>
+        </div>
+        <div class="row" id="platforms-row">
+            <div class="col-sm-12">
+                <!--<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>-->
+                <a id="android-icon" class="platform-icon" alt="get aviator for android" href="https://play.google.com/store/apps/details?id=org.fsadayton.aviatorapp&hl=en"></a>
+                <!--<div>Icons made by <a href="http://www.flaticon.com/authors/icomoon" title="Icomoon">Icomoon</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>-->
+                <a id="ios-icon" class="platform-icon" alt="get aviator for iOS" href="https://itunes.apple.com/us/app/aviator-by-family-services/id1118027894?mt=8"></a>
+                <!--<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>-->
+                <a id="responsive-icon" class="platform-icon" alt="get aviator for laptop" href="@Url.Action("Index", "Web")"></a>
+            </div>
+        </div>
+
+    </header>
+    <div class="container-fluid" id="main-content">
+        <section id="marketing-video" class="row">
+            <div id="video-text" class="col-sm-6">
+                <h1>How can <strong>AVIATOR</strong> help you?</h1>
+            </div>
+            <div id="video-embed" class="col-sm-6">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/eZHkNQeU6WQ"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="application-breakdown" class="row">
+            <div id="application-image" class="col-sm-4">
+                <img src="~/Content/Images/App-On-Phone.png" alt="application on phone" />
+            </div>
+            <div id="application-feature-container" class="col-sm-8">
+                <div class="application-feature col-md-4 col-xs-6">
+                    <div class="application-feature-header">
+                        <img src="~/Content/Images/familiar17.svg" alt="personal resources icon" />
+                        <h3>Personal Resources</h3>
+                    </div>
+                    <p>Click on General for browsing or Crime to search for resources that address issues such as health, food, clothing, shelter, children and family, transportation, and home safety concerns.</p>
+                </div>
+                <div class="clearfix hidden-sm hidden-md hidden-lg"></div>
+                <div class="application-feature col-md-4 col-sm-6">
+                    <div class="application-feature-header">
+                        <img src="~/Content/Images/justice4.svg" alt="law and corrections icon" />
+                        <h3>Law & Corrections</h3>
+                    </div>
+                    <p>Access information to local law enforcement, jails, courts and legal representation. Click on VINE (Victim Information Notification Everyday) to find and be alerted to any changes in the incarceration status of a perpetrator.</p>
+                </div>
+                <div class="application-feature col-md-4 col-sm-6">
+                    <div class="application-feature-header">
+                        <img src="~/Content/Images/payment7.svg" alt="victim compensation icon" />
+                        <h3>Victim Compensation</h3>
+                    </div>
+                    <p>Access information regarding possible financial assistance after a crime.</p>
+                </div>
+
+                <div class="application-feature col-md-4 col-sm-6">
+                    <div class="application-feature-header">
+                        <img src="~/Content/Images/disabled8.svg" alt="special populations icon" />
+                        <h3>Special Populations</h3>
+                    </div>
+                    <p>Find specialized resources for veterans, the elderly, the disabled, the deaf and more.</p>
+                </div>
+                <div class="application-feature col-md-4 col-sm-6">
+                    <div class="application-feature-header">
+                        <img src="~/Content/Images/2440.svg" alt="crisis contacts icon" />
+                        <h3>Crisis Contacts</h3>
+                    </div>
+                    <p>Access to 24-hour manned phone lines for many different crises, such as suicide prevention and domestic violence help.</p>
+                </div>
+                <div class="application-feature col-md-4 col-sm-6">
+                    <div class="application-feature-header">
+                        <img src="~/Content/Images/info24.svg" alt="other useful tools icon" />
+                        <h3>Other Useful Tools</h3>
+                    </div>
+                    <p>Send a custom emergency message to trusted contacts, quickly hide AVIATOR and replace it with your favorite website, or request a virtual chaperone when walking home all at the touch of a button.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="about" class="row">
+            <h2>ABOUT FAMILY SERVICES</h2>
+            <hr class="line-and-dot" />
+            <p>Family Services has served well over one million people in its 120 years, including thousands of primary and secondary crime victims. Family Services has continuously evolved to meet the needs of the community; serving as the first social welfare organization, the first child welfare agency, and the first job-training provider in the region.</p>
+
+            <p>The Agency is certified by the Ohio Department of Mental Health & Addiction Services, and accredited by the Council on Accreditation (COA) which assures funders and the community that Family Services subscribes to the highest possible professional standards of integrity and practice. Crime victims, the mentally ill, Deaf, disabled, underserved, poor, homeless and working poor are the primary clients served by Family Services.</p>
+
+            <p>Our highly trained and qualified staff provides a broad range of agency, community and home-based programs designed to support the health and human service needs of individuals, families and communities, including crime victims and their families. Family Services has no constituency limitations, and provides services to any victims, regardless of gender, sexual orientation, race, age, religion, disability or other unique identifier. Staff has experience providing counseling, case management, advocacy and support services for victims of domestic violence, rape, child abuse, sexual violence, DUI, assault and other crimes, and also serves ex-offenders and other victims often turned away by traditional victim service agencies.</p>
+
+            <h2>ABOUT UDRI</h2>
+            <hr class="line-and-dot"/>
+            <p>The University of Dayton Research Institute (UDRI) Software Systems Group (SSG) creates total solutions including hardware, software, and algorithms.  As an experienced systems integrator, we support or lead all phases of technology development efforts from requirements definition to preliminary and detailed design, analysis, prototyping, testing, transition, and training. We have strong software development experience in multiple areas, including interoperability, situational awareness, next generation manufacturing, high performance computing, sensor systems, and cyber security. </p>
+        </section>
+    </div>
+    <footer class="container-fluid">
+        <div class="row" id="contact-bar">
+            <div class="col-md-4 left">
+                Questions? Visit <a href="http://www.fsadayton.org/">our website</a> or get in touch
+            </div>
+            <div class="col-md-8 right">
+                <div class="col-sm-3">
+                    <a href="tel:+19372229481">(937) 222-9481</a>
+                </div>
+                <div class="col-sm-5">
+                    <a href="mailto:information@fsadayton.org">information@fsadayton.org</a>
+                </div>
+                <div class="col-sm-3">
+                    2211 Arbor Blvd <br />
+                    Dayton, Ohio 45439
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="social-media-bar" class="col-sm-12">
+                <!--<div>Icons made by <a href="http://www.flaticon.com/authors/google" title="Google">Google</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>-->
+                <a id="twitter-icon" alt="twitter" href="#"></a>
+                <a id="facebook-icon" alt="facebook" href="#"></a>
+                <a id="youtube-icon" alt="youtube" href="https://www.youtube.com/channel/UCW5WanodgUdUTjKf9gtukXQ"></a>
+            </div>
+        </div>
+        <hr class="line-and-dot" />
+        <div id="terms-of-service" class="row">
+            <div class="col-sm-4">
+                <h5>Terms of Service</h5>
+                <p>This app is funded through a grant from the Office for Victims of Crime, Office of Justice Programs, U.S. Department of Justice. Neither the U.S. Department of Justice nor any of its components operate, control, are responsible for, or necessarily endorse, this application (including, without limitation, its content, technical infrastructure, and policies, and any services or tools provided).</p>
+
+                <p> This app was produced by Family Service Association, Inc. under Grant #2014-VF-GX-K019, awarded by the Office for Victims of Crime, Office of Justice Programs, U.S. Department of Justice. The opinions, findings, and conclusions or recommendations expressed in this app are those of the contributors and do not necessarily represent the official positions or policies of the U.S. Department of Justice.</p>
+            </div>
+            <div id="git-link-holder" class="col-sm-2">
+                <!--<div>Icons made by <a href="http://www.flaticon.com/authors/dave-gandy" title="Dave Gandy">Dave Gandy</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>-->
+                <img src="~/Content/Images/github-wh.png" alt="github icon"/><br/>
+                <a class="text-link" href="https://github.com/fsadayton/ArmorApp" title="GitHub Link">AVIATOR on GitHub</a>
+            </div>
+            <div class="col-sm-6" id="about-github">
+                <h5>What is GitHub?</h5>
+                <p>GitHub is a code repository with a multitude of publicly-available, open-source projects ready for download, including AVIATOR. You can read more about what GitHub is and how it works <a href="https://github.com/">at their website</a>
+                </p>
+                <h5>How Can I Use This?</h5>
+                <p>You will be downloading the <a href="https://github.com/fsadayton/ArmorApp">AVIATOR source code</a>. You can dissect it for learning purposes, make your own suggested changes, or even repurpose it for your own use. Just be sure to read the <a href="https://github.com/fsadayton/ArmorApp/blob/dev/README.md">license</a> at the bottom of the README to make sure your use of AVIATOR complies.
+                </p>
+                <h5>How Do I Get Started?</h5>
+                <p>First you'll want to take a look at the <a href="https://github.com/fsadayton/ArmorApp/blob/dev/README.md">README</a> file and go from there. The README file contains information on the technical requirements that you'll need. You may also want to make use of GitHub's extensive <a href="https://help.github.com/">help documentation</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/LandingPage")
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Models.AccountManagement.AccountAdminViewModel>
+
+<table id="allItems" class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Name")
+        </th>
+        <th>
+            @Html.DisplayName("Active")
+        </th>
+        <th>
+            @Html.DisplayName("Role")
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        var activateID = "activate_" + item.UserId;
+        var deactivateID = "deactivate_" + item.UserId;
+        var checkboxID = "activeCheck_" + item.UserId;
+        
+        var activateDisplay = item.IsActive ? "activateButton collapse" : "activateButton";
+        var deactivateDisplay = item.IsActive ? "" : "collapse";
+        
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                <span id="@checkboxID">@Html.DisplayFor(modelItem => item.IsActive)</span> 
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td width="180">
+                @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.UserId }) |
+                    <a href="#" id="@activateID" class="@activateDisplay">Activate</a>
+                    <a href="#" id="@deactivateID" data-toggle="modal" data-target="#confirm-deactivate"  class="hover-cursor deactivateButton @deactivateDisplay" >Deactivate</a>
+               
+            </td>
+        </tr>
+    }
+</table>

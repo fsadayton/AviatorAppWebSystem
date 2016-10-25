@@ -1,0 +1,63 @@
+﻿@model Website.Models.PersonalResourcesViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutFullWidth.cshtml";
+}
+
+@section HeadSection {
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+}
+
+@section TitleSection {
+    <div id="aviatorlandingheader">
+        <div class="col-md-offset-2 col-md-8">
+            <center><h1 id="landingpgTitle">Personal Resources</h1></center>
+            <center><p id="aviatorDescription"><strong>Click on General for browsing or Crime to search for resources that address issues such as health, food, clothing, shelter, children and family, transportation, and home safety concerns.</strong></p></center>
+        </div>
+    </div>
+}
+
+
+<ul class="list-unstyled subMenu">
+    <li class="subMenuItem subMenuItem-selected" data-select="general"><object type="image/svg+xml" data="~/Content/Images/house34.svg" class="menuPicture menuPicture-subMenu"></object>General</li><li class="subMenuItem" data-select="crime"><object type="image/svg+xml" data="~/Content/Images/criminal.svg" class="menuPicture menuPicture-subMenu"></object>Crime</li>
+</ul>
+
+<ul id="general" class="list-unstyled subMenuSelection subMenuSelectionDefault">
+    @foreach (var item in Model.General){
+            <li class="clearfix submenuLink" onclick="window.location.href='@Url.Action("Index", "PersonalResources", new {family=@item.Id})'">
+                <div class="subMenuSelectionTitle">
+                    @item.Name
+                    <p id="Description-@item.Id" class="subMenuSelectionInfo hidden-xs">@item.Description</p>
+                </div>
+                <div id="InfoButton-@item.Id" data-toggle="collapse" data-target="#Description-@item.Id" class="subMenuSelectionInfoButton visible-xs-block">
+                    <i class="fa fa-info-circle"></i>
+                </div>
+            </li>
+    }
+</ul>
+
+<ul id="crime" class="list-unstyled subMenuSelection crime">
+    @foreach (var item in Model.Crime)
+    {
+        <a class="subMenuLink" href="@Url.Action("Index", "PersonalResources", new {category = @item.Id})">
+            <li class="clearfix">
+                <div class="subMenuSelectionTitle">
+                    @item.Name
+                    <p id="Description-@item.Id" class="subMenuSelectionInfo hidden-xs">@item.Description</p>
+                </div>
+                <div id="InfoButton-@item.Id" class="subMenuSelectionInfoButton visible-xs-block"><i class="fa fa-info-circle"></i>
+                </div>
+            </li>
+        </a>
+    }
+</ul>
+
+@section Scripts {
+    <script language="javascript">
+        $(document).ready(function () {
+            $(".subMenuSelectionInfoButton").click(function (e) {
+                e.stopPropagation();
+                $(this).prev().find('.subMenuSelectionInfo').collapse('toggle');
+            });
+        });
+    </script>
+}

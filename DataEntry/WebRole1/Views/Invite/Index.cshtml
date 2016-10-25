@@ -1,0 +1,53 @@
+﻿@using Models.AccountManagement
+@model IEnumerable<InviteViewModel>
+
+<h3>Site Invites</h3>
+ @if (TempData["Error"] != null && TempData["Error"].ToString() != string.Empty)
+    {
+<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> @TempData["Error"]</div>
+    }
+<div class="row">
+    <div class="col-sm-offset-1 col-sm-4">
+        <a href="@Url.Action("Create", "Invite", new {userRoleType = (int) UserRoleType.Admin})">
+            <div class="btn btn-primary btn-lg btn-block" data-toggle="tooltip" data-placement="top" title="Familiy Services Administrators">
+                <div><i class="fa fa-plus-square"></i></div>
+                <div>Site Administrator</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-sm-offset-2 col-sm-4">
+        <a href="@Url.Action("Create", "Invite", new {userRoleType = (int) UserRoleType.Provider})">
+            <div class="btn btn-primary btn-lg btn-block" data-toggle="tooltip" data-placement="top" title="Service Providers to Edit Provider Data">
+                <div>
+                    <i class="fa fa-plus-square"></i>
+                </div>
+                <div>Service Provider</div>
+            </div>
+        </a>
+    </div>
+</div>
+<br/>
+
+<h4>Sent Invites</h4>
+<div class="table-responsive">
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.InviteeEmailAddress)</th>
+        <th>@Html.DisplayNameFor(model => model.UserRoleType)</th>
+        <th>@Html.DisplayNameFor(model => model.DateSent)</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.InviteeEmailAddress)</td>
+            <td>@(item.UserRoleType == UserRoleType.Admin ? "Family Service Administrator" : "Service Provider Administrator")</td>
+            <td>@Html.DisplayFor(modelItem => item.DateSent)</td>
+            <td>
+                <a href="@Url.Action("Resend", new {id = item.Id})">Resend&nbsp;Invite</a><br/>
+                <a href="@Url.Action("Delete", new {id = item.Id})">Cancel&nbsp;Invite</a>
+            </td>
+        </tr>
+    }
+</table>
+    </div>

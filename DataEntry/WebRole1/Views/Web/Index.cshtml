@@ -1,0 +1,104 @@
+﻿@using System.Collections.Generic
+@using System.Globalization
+@using DataEntry_Helpers
+@model Models.WebsiteServiceProvider
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@section TitleSection {
+<div id="aviatorlandingheader">
+    <div class="col-md-offset-2 col-md-8">
+        <center><h1 id="landingpgTitle">Welcome to </h1>
+            <img src="~/Content/Images/AVIATOR_Logo_COLOR.png" /></center>
+        <center>
+            <p id="aviatorDescription"><strong> A Victim Information App To Ohio Resources, was created through a partnership between Family Services and the University of Dayton Research Institute.
+                We are proud to provide this free app to our community.  We hope you will find it to be a valuable resource.</strong></p></center>
+    </div>
+ </div>
+    }
+
+<form id="serviceProviderForm">
+    <div class="pull-left clearfix ">
+        <div class="pull-right menuItemContainer" data-toggle="popover" data-placement="bottom" data-content="Information about Aviator" data-trigger="hover">
+            <a href='@Url.Action("Index", "Landing")' class="svg">
+                <div id="accountbutton" class="img-rounded menuButton menuButton-account">
+
+                    <div class="left indexhomebordertop"> </div>
+                    <object type="image/svg+xml" data="~/Content/Images/info24.svg" class="menuPicture"></object>
+                    <div class="aviatorButtonTitle" style="margin: 5px 16px;">About Aviator</div>
+                    <div class="buttonDescription">View AVIATOR's and Family Services history</div>
+                </div>
+            </a>
+        </div>
+        <div class="pull-left menuItemContainer" data-toggle="popover" data-placement="bottom" data-content="View organizations that can help address your needs" data-trigger="hover">
+            <a href='@Url.Action("Index", "PersonalResources")' class="svg">
+                <div id="familybutton" class="img-rounded menuButton menuButton-family">
+                    <div class="left indexhomebordertop"> </div>
+                    <object type="image/svg+xml" data="~/Content/Images/familiar17.svg" class="menuPicture"></object>
+                    <div class="aviatorButtonTitle">Personal Resources</div>
+                    <div class="buttonDescription">View organizations that can help address your needs</div>
+
+                </div>
+            </a>
+        </div>
+        <div class="pull-right menuItemContainer" data-toggle="popover" data-placement="bottom" data-content="Contact local authorities or find jail time info about an offender" data-trigger="hover">
+            <a href='@Url.Action("Index", "LCProvider")' class="svg">
+                <div id="correctionsButton" class="img-rounded menuButton menuButton-corrections">
+                    <div class="left indexhomebordertop"> </div>
+                    <object type="image/svg+xml" data="~/Content/Images/justice4.svg" class="menuPicture"></object>
+                    <div class="aviatorButtonTitle">Law & Corrections</div>
+                    <div class="buttonDescription">Contact local authorities or find jail time info about an offender</div>
+                </div>
+            </a>
+        </div>
+        <div class="pull-left menuItemContainer" data-toggle="popover" data-placement="bottom" data-content="Victim of a violent crime? View financial assistance options here." data-trigger="hover">
+            <a href="@Url.Action("Index", "PersonalCompensation")" class="svg">
+                <div id="compensationbutton" class="img-rounded menuButton menuButton-compensation">
+                    <div class="left indexhomebordertop"> </div>
+                    <object type="image/svg+xml" data="~/Content/Images/payment7.svg" class="menuPicture"></object>
+                    <div class="aviatorButtonTitle">Victim Compensation</div>
+                    <div class="buttonDescription">Victim of a violent crime? View financial assistance options</div>
+                </div>
+            </a>
+        </div>
+        <div class="pull-right menuItemContainer" data-toggle="popover" data-placement="bottom" data-content="Find specialized resources for veterans, elderly, and more" data-trigger="hover">
+
+            <a href="@Url.Action("Index", "SpecialPopulations")" class="svg">
+                <div id="disabledbutton" class="img-rounded menuButton menuButton-disabled">
+                    <div class="left indexhomebordertop"> </div>
+                    <object type="image/svg+xml" data="~/Content/Images/disabled8.svg" class="menuPicture"></object>
+                    <div class="aviatorButtonTitle">Special Populations</div>
+                    <div class="buttonDescription">Find specialized resources for veterans, elderly, and more</div>
+                </div>
+            </a>
+        </div>
+        <div class="pull-left menuItemContainer"data-toggle="popover" data-placement="bottom" data-content="Contact information for crisis situations" data-trigger="hover">
+            <a href="@Url.Action("Index", "CrisisContacts")">
+                <div id="crisiscontactsbutton" class="img-rounded menuButton menuButton-crisiscontacts">
+                    <div class="left indexhomebordertop"> </div>
+                    <object type="image/svg+xml" data="~/Content/Images/2440.svg" class="menuPicture"></object>
+                    <div class="aviatorButtonTitle" style="margin: 5px 16px;">Crisis Contacts</div>
+                    <div class="buttonDescription">View local phone numbers that match your needs</div>
+                </div>
+            </a>
+        </div>
+
+        <div class="pull-left menuItemContainer" data-toggle="popover" data-placement="bottom" data-content="Additional tools and websites" data-trigger="hover">
+            <a href='@Url.Action("Index", "Tools")' class="svg">
+                <div id="toolsButton" class="img-rounded menuButton menuButton-tools">
+
+                    <div class="left indexhomebordertop"> </div>
+                    <object type="image/svg+xml" data="~/Content/Images/screwdriver-and-wrench-crossed.svg" class="menuPicture"></object>
+                    <div class="aviatorButtonTitle" style="margin: 5px 16px;">Tools</div>
+                    <div class="buttonDescription">Additional tools and websites</div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+    </form>
+@section Scripts {
+    <script src="~/Scripts/bootstrap-toolkit.js"> </script>
+    <script src="~/Scripts/NavigationButtons.js"> </script>
+}

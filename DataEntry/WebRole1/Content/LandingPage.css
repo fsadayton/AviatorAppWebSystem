@@ -1,0 +1,437 @@
+﻿a {
+    color: white !important;
+    text-decoration: none !important;
+    font-size: 1.2em;
+    padding: 14px;
+}
+
+    a:hover, a:active {
+        color: #e9931a !important;
+    }
+
+header {
+    background: #4AA28B url("../Content/Images/App-In-Hand-Green-Overlay-Small.png") no-repeat right top;
+    height: 250px;
+    padding: 0 30px 25px;
+    font-family: 'Dosis', Arial, sans-serif;
+    color: white;
+}
+
+    header #navigation {
+        background-color: transparent;
+        width: 100%;
+        z-index: 1000;
+        padding: 20px 0;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+.sticky {
+    position: fixed !important;
+    background-color: #4aa28b !important;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+header nav {
+    text-align: right;
+    word-spacing: 7px;
+}
+
+header #platforms-header-row {
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+header #platforms-row div {
+    margin-top: 10px;
+}
+
+    header #platforms-row div > a {
+        margin-right: 30px;
+        height: 50px;
+        width: 50px;
+        display: inline-block;
+    }
+
+    header #platforms-row div #android-icon {
+        background: transparent url("../Content/Images/android-wh.png") no-repeat;
+        background-size: contain;
+    }
+
+        header #platforms-row div #android-icon:hover {
+            background: transparent url("../Content/Images/android-or.png") no-repeat;
+            background-size: contain;
+        }
+
+    header #platforms-row div #ios-icon {
+        background: transparent url("../Content/Images/apple-wh.png") no-repeat;
+        background-size: contain;
+    }
+
+        header #platforms-row div #ios-icon:hover {
+            background: transparent url("../Content/Images/apple-or.png") no-repeat;
+            background-size: contain;
+        }
+
+    header #platforms-row div #responsive-icon {
+        background: transparent url("../Content/Images/responsive-wh.png") no-repeat;
+        background-size: contain;
+    }
+
+        header #platforms-row div #responsive-icon:hover {
+            background: transparent url("../Content/Images/responsive-or.png") no-repeat;
+            background-size: contain;
+        }
+
+section#marketing-video {
+    background-color: #CCC;
+}
+
+    section#marketing-video #video-text {
+        padding-top: 10%;
+        padding-left: 35px;
+        padding-right: 15px;
+    }
+
+        section#marketing-video #video-text h1 {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 3em;
+        }
+
+    section#marketing-video #video-embed {
+        padding: 35px;
+    }
+
+
+section#application-breakdown {
+    display: flex;
+    align-items: center;
+    margin: 15px;
+}
+
+    section#application-breakdown #application-image img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    section#application-breakdown #application-feature-container {
+        width: 100%;
+    }
+
+    section#application-breakdown .application-feature {
+        width: 30.5%;
+        margin: 1%;
+        border: 2px #009577 solid;
+        -ms-border-radius: 6px;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        border-radius: 6px;
+        font-family: 'Dosis', Arial, sans-serif;
+    }
+
+        section#application-breakdown .application-feature .application-feature-header {
+            overflow: hidden;
+        }
+
+            section#application-breakdown .application-feature .application-feature-header > * {
+                position: relative;
+                float: left;
+            }
+
+            section#application-breakdown .application-feature .application-feature-header img {
+                max-width: 35px;
+                margin: 10px 5px 0;
+                vertical-align: inherit;
+            }
+
+            section#application-breakdown .application-feature .application-feature-header h3 {
+                color: #203444;
+                font-size: 1.3em;
+                font-weight: bold;
+                vertical-align: top;
+                overflow: hidden;
+                margin: 15px auto;
+                padding-left: 10px;
+                word-wrap: break-word;
+                float: none;
+            }
+
+section#about {
+    background-color: #203444;
+    font-family: 'Dosis', Arial, sans-serif;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+    section#about h2 {
+        font-weight: bold;
+    }
+
+    section#about p {
+        padding: 10px 100px;
+        text-align: left;
+    }
+
+        section#about p:last-child {
+            padding-bottom: 30px;
+        }
+
+hr.line-and-dot {
+    margin-top: 16px;
+    border-top: 2px solid white;
+    width: 240px;
+}
+
+    hr.line-and-dot:after {
+        content: '•';
+        display: inline-block;
+        position: relative;
+        top: -18px;
+        padding: 0 10px;
+        background: #203444;
+        color: white;
+        font-size: 4.5em;
+        line-height: 20px;
+    }
+
+footer {
+    display: block;
+    background-color: #4AA28B;
+    text-align: center;
+    font-family: 'Dosis', Arial, sans-serif;
+    color: white;
+    padding-bottom: 20px;
+}
+
+    footer #contact-bar {
+        background-color: #009577;
+        padding: 25px;
+        font-size: medium;
+    }
+
+        footer #contact-bar .left {
+            text-align: left;
+            font-size: 1.3em;
+        }
+
+        footer #contact-bar .right {
+            text-align: right;
+        }
+
+        footer #contact-bar a {
+            font-size: inherit;
+            padding: initial;
+            font-weight: bold;
+        }
+
+    footer #social-media-bar {
+        background-color: #4AA28B;
+        padding: 25px 0 10px;
+    }
+
+        footer #social-media-bar > a {
+            margin: 15px;
+            height: 40px;
+            width: 40px;
+            display: inline-block;
+            vertical-align: bottom;
+        }
+
+        footer #social-media-bar a#twitter-icon {
+            background: transparent url("../Content/Images/twitter-wh.png") no-repeat;
+            background-size: contain;
+        }
+
+        footer #social-media-bar a#facebook-icon {
+            background: transparent url("../Content/Images/facebook-wh.png") no-repeat;
+            background-size: contain;
+        }
+
+        footer #social-media-bar a#youtube-icon {
+            background: transparent url("../Content/Images/youtube-wh.png") no-repeat;
+            background-size: contain;
+        }
+
+            footer #social-media-bar a#youtube-icon:hover {
+                background: transparent url("../Content/Images/youtube-or.png") no-repeat;
+                background-size: contain;
+            }
+
+    /* override bg color of hr */
+    footer hr.line-and-dot:after {
+        background-color: #4AA28B;
+    }
+
+    footer #terms-of-service {
+        text-align: left;
+        margin: 20px;
+    }
+
+        footer #terms-of-service > div {
+            padding: 35px;
+        }
+
+        footer #terms-of-service #git-link-holder {
+            padding: 35px 0;
+            text-align: center;
+        }
+
+        footer #terms-of-service #git-link-holder {
+            margin-top: 35px;
+        }
+
+        footer #terms-of-service #git-link-holder a.text-link {
+            position: relative;
+            top: 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+
+        }
+
+        footer #terms-of-service h5 {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 10px 0 -2px;
+        }
+
+        footer #terms-of-service #about-github a {
+            font-size: 1em;
+            letter-spacing: initial;
+            padding: 0;
+            font-weight: bold;
+        }
+
+@media (min-width: 1096px) {
+    section#marketing-video #video-text h1 {
+        font-size: 4em;
+    }
+
+    section#application-breakdown .application-feature {
+        width: 30.5%;
+        margin: 1%;
+    }
+}
+
+
+@media (min-width: 801px) and (max-width: 969px) {
+    section#marketing-video #video-text {
+        padding-top: 20px;
+        text-align: center;
+    }
+
+    section#application-breakdown #application-image {
+        display: none;
+    }
+
+    section#application-breakdown .application-feature {
+        width: 48%;
+        margin: 1%;
+    }
+}
+
+@media (max-width: 800px) {
+    section#marketing-video #video-text h1 {
+        font-size: 2.5em;
+    }
+
+    section#application-breakdown {
+        margin: 15px 0;
+    }
+
+    section#application-breakdown #application-image {
+        display: none;
+    }
+
+    section#application-breakdown .application-feature {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 767px) {
+    #main-content {
+        font-size: 1.5em;
+    }
+
+    header > * {
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    header nav {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    header nav span.nav-separator {
+        display: none;
+    }
+    header nav span {
+        display: block;
+    }
+
+    header nav span#app-link {
+        font-size: 1.4em;
+    }
+
+    header nav span#sublinks {
+        font-size: 1em;
+    }
+
+    .sticky span#app-link {
+        margin-top: -10px;
+    }
+
+    .sticky #logo-holder {
+        display: none;
+    }
+    .sticky img {
+        display: none;
+    }
+
+    header #platforms-header-row {
+        display: none;
+    }
+
+    header #platforms-row {
+        margin-top: -15px;
+    }
+
+    header #platforms-row div > a {
+        margin-right: 30px;
+        height: 40px;
+        width: 40px;
+   }
+
+    section#marketing-video #video-text {
+        padding: 5px 10px 0;
+        text-align: center;
+    }
+
+        section#marketing-video #video-text h1 {
+            font-size: 2em;
+        }
+
+    section#about p {
+        padding: 10px 20px;
+    }
+
+        section#about p:last-child {
+            padding-bottom: 10px;
+        }
+
+    footer #terms-of-service > div {
+        padding: 0;
+    }
+}
+

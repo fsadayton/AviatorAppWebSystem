@@ -1,0 +1,44 @@
+﻿﻿﻿@model System.Collections.Generic.IEnumerable<Website.Models.FamilyEditor>
+@{
+    Layout = "~/Views/Shared/_LayoutFullWidth.cshtml";
+}
+
+@section HeadSection {
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+}
+
+@section TitleSection {
+    <div id="aviatorlandingheader">
+        <div class="col-md-offset-2 col-md-8">
+            <center><h1 id="landingpgTitle">Special Populations</h1></center>
+            <center><p id="aviatorDescription"><strong>Find specialized resources for veterans, the elderly, the disabled, the deaf and more.</strong></p></center>
+        </div>
+    </div>
+}
+
+
+<ul id="general" class="list-unstyled subMenuSelection subMenuSelectionDefault ">
+    @foreach (var item in Model){
+            <li class="clearfix submenuLink" onclick="window.location.href='@Url.Action("Index", "SpecialPopulations", new {family=@item.Id})'">
+                <div class="subMenuSelectionTitle">
+                    @item.Name
+                    <p id="Description-@item.Id" class="subMenuSelectionInfo hidden-xs">@item.Description</p>
+                </div>
+                <div id="InfoButton-@item.Id" data-toggle="collapse" data-target="#Description-@item.Id" class="subMenuSelectionInfoButton visible-xs-block">
+                    <i class="fa fa-info-circle"></i>
+                </div>
+            </li>
+    }
+</ul>
+
+
+@section Scripts {
+    <script language="javascript">
+        $(document).ready(function () {
+            $(".subMenuSelectionInfoButton").click(function (e) {
+                e.stopPropagation();
+                $(this).prev().find('.subMenuSelectionInfo').collapse('toggle');
+            });
+        });
+    </script>
+}

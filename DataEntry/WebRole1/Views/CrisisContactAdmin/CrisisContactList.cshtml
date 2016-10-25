@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Website.Models.CrisisContactDisplay>
+
+
+@foreach (var item in Model)
+{
+    <li class="list-group-item clearfix">
+        <div class="pull-left" style="width: 80%">
+            <div>
+                <h4 style="display: inline-block">@item.Name</h4>
+            </div>
+            <div>
+                @item.PhoneNumber
+            </div>
+        </div>
+        <div class="pull-right">
+            <span class="link" style="padding: 10px;" data-href="@Url.Action("Delete", new {id = item.ID})" data-toggle="modal" data-target="#confirm-delete" data-name="@item.Name"><i class="fa fa-trash"></i></span>
+            <a href="@Url.Action("Edit", new {item.ID})" class=""><i class="fa fa-edit"></i></a>
+        </div>
+    </li>
+}

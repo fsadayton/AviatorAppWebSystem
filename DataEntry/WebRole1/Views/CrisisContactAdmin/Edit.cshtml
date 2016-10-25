@@ -1,0 +1,31 @@
+﻿
+@using System.Web.Mvc.Html
+@model Website.Models.CrisisContactDisplay
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h3> Edit Crisis Contact</h3>
+    Html.RenderPartial("CrisisContactForm", Model);
+
+    <div class="clearfix">
+        <div class="pull-left ">
+            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-danger" })
+        </div>
+        <div class="pull-right">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/dataEntry")
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+    </script>
+}

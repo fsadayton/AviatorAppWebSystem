@@ -1,0 +1,17 @@
+﻿﻿@model Models.WebsiteServiceProvider
+
+@section TitleSection {
+    <div id="aviatorlandingheader">
+        <div class="col-md-offset-2 col-md-8">
+            <center><h1 id="landingpgTitle">Personal Compensation</h1></center>
+            <center><p id="aviatorDescription"><strong>Organizations that can help address your needs.</strong></p></center>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/serviceProviderDisplay")
+}
+
+
+@Html.Partial("_ServiceProviderDisplayPartial", Model)

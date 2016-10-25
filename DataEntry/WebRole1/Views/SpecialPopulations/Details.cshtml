@@ -1,0 +1,19 @@
+﻿﻿﻿@model Models.WebsiteServiceProvider
+
+@section TitleSection {
+    <div id="aviatorlandingheader">
+        <div class="col-md-offset-2 col-md-8">
+            <center><h1 id="landingpgTitle">Special Populations</h1></center>
+            <center><p id="aviatorDescription"><strong>Find specialized resources for veterans, the elderly, the disabled, the deaf and more.</strong></p></center>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/serviceProviderDisplay")
+}
+
+
+
+
+@Html.Partial("_ServiceProviderDisplayPartial", Model)

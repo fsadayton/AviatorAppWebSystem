@@ -1,0 +1,1 @@
+ALTER TABLE ContactPerson ALTER COLUMN ContactID int NULL; 

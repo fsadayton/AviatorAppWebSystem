@@ -1,0 +1,69 @@
+﻿@model System.Collections.Generic.IEnumerable<Models.WebsiteServiceProvider>
+
+<form id="searchForm">
+    <div class="form">
+        <div class="clearfix">
+            <div class="pull-left" style="width: 80%">
+                <h2>Service Providers</h2>
+            </div>
+            <div class="pull-right">
+                <a href="@Url.Action("Create")" class="headerButton"><i class="fa fa-plus"></i></a>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Search">Provider Name:</label> @Html.TextBox("Search", "", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>County:</label>
+            @Html.DropDownList("countyFilter", new List<SelectListItem>(), new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Category:</label>
+            @Html.DropDownList("categoryFilter", new List<SelectListItem>(), new { @class = "form-control" })
+        </div>
+
+        <button type="button" id="searchBtn" class="btn btn-primary">Search</button>
+    </div>
+    <br />
+</form>
+
+<div id="foundItems" class="">
+    <div id="results" class="panel panel-info">
+        <div class="panel-heading">
+            <span id="searchCount" class="badge"></span> Providers Found
+        </div>
+        <ul id="providerList" class="list-group"></ul>
+    </div>
+    <div id="searchSpinner" class="panel-spinner panel-spinner-short"><i class="fa fa-spinner fa-spin"></i></div>
+</div>
+
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Remove Service Provider
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this provider<span id="deleteProviderName"></span>? It will be removed permanently.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a id="deleteProviderButton" class="btn btn-danger btn-ok">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/dataEntry")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            providerSearch.setup();
+            //Hide any flash messages
+            setTimeout(function () {
+                $(".flash-message").fadeOut(1000);
+            }, 3000);
+        });
+    </script>
+
+}

@@ -1,0 +1,183 @@
+﻿@using System.Collections.Generic
+@using System.Web.Mvc.Html
+@using Website.Helpers
+@using LabelExtensions = System.Web.Mvc.Html.LabelExtensions
+@model Models.ServiceProviderLocation
+
+<div id="@Html.IdForModel()LocationFields" class="well">
+    <div class="form-horizontal">
+        <div id="@Html.IdForModel()RemoveLocation" class="button-close button-closeLocation"><i class="fa fa-close"></i></div>
+        <div class="clearfix">
+            <div class="pull-left">
+                <h4>Location Information</h4>
+            </div>
+            <div class="pull-right">
+                <div class="switch">
+                    @Html.EditorFor(model => model.Display, new { htmlAttributes = new { @class = "toggle-switch toggle-switch-round" } })
+                    @LabelExtensions.LabelFor(Html, model => model.Display, new { dataOn = "Show", dataOff = "Hide" })
+                </div>
+            </div>
+
+        </div>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <!-- Have to have a hidden ID field for the id to be set for the update action -->
+            @Html.EditorFor(model => model.Id, new {htmlAttributes = new {@class = "form-control hidden"}})
+            @LabelExtensions.LabelFor(Html, model => model.Name, new {@class = "control-label col-md-3"})
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Name, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Name, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <!-- Have to have a hidden ID field for the id to be set for the update action -->
+            @Html.EditorFor(model => model.Id, new {htmlAttributes = new {@class = "form-control hidden"}})
+            @LabelExtensions.LabelFor(Html, model => model.Street, new {@class = "control-label col-md-3 required"})
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Street, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Street, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @LabelExtensions.LabelFor(Html, model => model.City, new { @class = "control-label col-md-3 required" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @LabelExtensions.LabelFor(Html, model => model.CountryId, "Country", new { @class = "control-label col-md-3 required" })
+            <div class="col-md-8">
+                @Html.DropDownList("CountryId", (IEnumerable<SelectListItem>)ViewBag.CountryId, new { @class = "form-control countrySelection" })
+                @Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @LabelExtensions.LabelFor(Html, model => model.StateIdString, "State", new { @class = "control-label col-md-3 required" })
+            <div class="col-md-8">
+                @Html.DropDownListFor(model => model.StateIdString, Model.States, new { @class = "form-control stateSelection" })
+                @Html.ValidationMessageFor(model => model.StateIdString, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @LabelExtensions.LabelFor(Html, model => model.Zip, new { @class = "control-label col-md-3 required" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Zip, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Zip, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.Contact.Id, new { htmlAttributes = new { @class = "hidden" } })
+            @LabelExtensions.LabelFor(Html, model => model.Contact.PhoneNumber, "Phone", new { @class = "control-label col-md-3 required"})
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Contact.PhoneNumber, new {htmlAttributes = new {@class = "form-control phoneNumber"} })
+                @Html.ValidationMessageFor(model => model.Contact.PhoneNumber, "", new {@class = "text-danger phoneNumberValid"})
+            </div>
+        </div>
+        <div class="form-group">
+            @LabelExtensions.LabelFor(Html, model => model.Contact.HelpLine, "Help Line", new { @class = "control-label col-md-3" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Contact.HelpLine, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Contact.HelpLine, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @LabelExtensions.LabelFor(Html, model => model.Contact.Email, new { @class = "control-label col-md-3" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Contact.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Contact.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @LabelExtensions.LabelFor(Html, model => model.Contact.Website, new { @class = "control-label col-md-3" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Contact.Website, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Contact.Website, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <button id="@Html.IdForModel()ContactPersonLink" type="button" class="showContactPersonLink btn btn-link  @(Model.ContactPerson.Id != 0 ? "hide" : "")">Need a contact person for this location?</button>
+        <div id="@Html.IdForModel()ContactPersonInfo" class="@(Model.ContactPerson.Id != 0 ? "" : "hide")">
+            <h4>Contact Person</h4>
+            <div class="form-group">
+                @Html.EditorFor(model => model.ContactPerson.Id, new { htmlAttributes = new { @class = "hidden" } })
+                @LabelExtensions.LabelFor(Html, model => model.ContactPerson.FistName, "First Name", new {@class = "control-label col-md-3"})
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ContactPerson.FistName, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.ContactPerson.FistName, "", new {@class = "text-danger"})
+                </div>
+            </div>
+            <div class="form-group">
+                @LabelExtensions.LabelFor(Html, model => model.ContactPerson.LastName, "Last Name", new { @class = "control-label col-md-3" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ContactPerson.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ContactPerson.LastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @LabelExtensions.LabelFor(Html, model => model.ContactPerson.JobTitle, "Job Title", new { @class = "control-label col-md-3" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ContactPerson.JobTitle, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ContactPerson.JobTitle, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.ContactPerson.Contact.Id, new { htmlAttributes = new { @class = "hidden" } })
+                @LabelExtensions.LabelFor(Html, model => model.ContactPerson.Contact.PhoneNumber, "Phone", new {@class = "control-label col-md-3"})
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ContactPerson.Contact.PhoneNumber, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.ContactPerson.Contact.PhoneNumber, "", new {@class = "text-danger"})
+                </div>
+            </div>
+            <div class="form-group">
+                @LabelExtensions.LabelFor(Html, model => model.ContactPerson.Contact.Email, new { @class = "control-label col-md-3" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ContactPerson.Contact.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ContactPerson.Contact.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-inline">
+        <h4  class="required">Coverage Areas</h4>
+        <div class="form-group">
+            @Html.DropDownList("coverageCountry", (IEnumerable<SelectListItem>) ViewBag.CountryId, new {@class = "form-control coverageCountrySelection"})
+        </div>
+        <div class="form-group">
+             @Html.DropDownList("coverageState", (IEnumerable<SelectListItem>) ViewBag.StateId, "", new {@class = "form-control coverageStateSelection"}) 
+        </div>
+        <div class="form-group">
+           @Html.DropDownList("coverageCounty", (IEnumerable<SelectListItem>) ViewBag.CountyId, "", new {@class = "form-control coverageCountySelection"})
+        </div>
+        @Html.ActionLink("Add", "AddCoverage", null, new {id = "addCoverage", @class = "addCoverage"})
+
+        <button class="btn btn-primary pull-right" type="button" id="clearCoverage">Clear all</button>
+
+    </div>
+    @Html.ValidationMessageFor(model => model.Coverage, "", new { @class = "text-danger" })
+    <div id="CoverageFields" class="coverageList">
+        <div id="noCoverage" class="alert alert-warning" style="display: block;">
+            <i class="fa fa-exclamation-circle"></i> No coverages have been selected.
+        </div>
+        <div class="coverageRowLocation">
+            @foreach (var item in Model.Coverage)
+            {
+                Html.RenderPartial("CoverageRow", item);
+            }
+        </div>
+    </div>
+    
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

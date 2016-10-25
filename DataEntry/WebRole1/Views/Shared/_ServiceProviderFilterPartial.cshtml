@@ -1,0 +1,53 @@
+﻿﻿<div id="categoryFilter" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header" style="background-color: lightgrey; color: white;">
+                <center><h3 class="modal-title"><strong>Filter Summary</strong></h3></center>
+
+            </div>
+            <div id="modal-body" class="modalBody">
+                <br />
+                <span>Show me </span>
+                <span id="categoriesStatement" style="font-weight: bold; color:#009577">All</span>
+                <span> in </span>
+                <span id="countiesStatement" style="font-weight: bold; color: #009577">All</span>
+                <span> County(s)</span>
+
+                <br />
+                <div>
+                    <center>
+                        <h3 style="background-color: lightgrey; color: white; height:30px; "><span id="categoriesButton" class="pull-left filterModalButton "> < categories</span><strong id="filterModalTitle">Categories</strong><span id="countiesButton" class="pull-right filterModalButton ">counties > </span></h3>
+                    </center>
+                </div>
+                <div id="categoriesFilterText">
+                    <div id="categoryFilterButtonList" class="btn-group pull-left" data-toggle="buttons">
+
+                    </div>
+                    <div class="list-group pull-right">
+
+                    </div>
+
+                </div>
+                <div id="countiesFilterButtonText" style="background-color:lightgrey">
+                    <div id="countyFilterButtonList" class="pull-left">
+                        <br />
+                        <Label>Search</Label>
+                        <input id="filterSearchBar" style="width:568px" class="form-control "></>
+                        <br />
+                        <div id="countiesFilter" class="pull-left" data-toggle='buttons'>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" style="background-color: #203444" class="btn btn-default bottom-left pull-left" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                <button type="button" style="background-color: #203444" class="btn btn-default bottom-right" data-dismiss="modal" id="applyFilter"><i class="fa fa-check"></i> Done</button>
+            </div>
+        </div>
+    </div>
+</div>

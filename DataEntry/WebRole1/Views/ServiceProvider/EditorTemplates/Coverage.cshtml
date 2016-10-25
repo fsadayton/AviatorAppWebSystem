@@ -1,0 +1,14 @@
+﻿@model Models.ServiceProvider.Coverage
+
+<div class="col-md-4 row-padding">
+    @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "hidden" } })
+    @Html.EditorFor(model => model.CountyId, new {htmlAttributes = new {@class = "form-control coverageID"}})
+    @Model.CountyName
+</div>
+<div class="col-md-4 row-padding">
+    @Model.StateName
+</div>
+<div class="col-md-3 row-padding">
+    @Model.CountryName
+</div>
+<div id="@(ViewData.TemplateInfo.HtmlFieldPrefix.Replace("[", "").Replace("]", "").Replace(".", "") + "_delete")" class="deleteRow col-md-1 row-padding"><i class='fa fa-close'></i></div>

@@ -1,0 +1,53 @@
+﻿@using System.Web.Mvc.Html
+@model Website.Models.ToolViewModel
+
+<div class="form-horizontal">
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, new {@class = "control-label col-md-3 required"})
+        <div class="col-md-8">
+            @Html.TextBoxFor(model => model.Name, new {@class = "form-control"})
+            @Html.ValidationMessageFor(model => model.Name, "", new {@class = "text-danger"})
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-3" })
+        <div class="col-md-8">
+            @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.WebsiteUrl, new {@class = "control-label col-md-3"})
+        <div class="col-md-8">
+            @Html.TextBoxFor(model => model.WebsiteUrl, new {@class = "form-control"})
+            @Html.ValidationMessageFor(model => model.WebsiteUrl, "", new {@class = "text-danger"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AppleStore, new {@class = "control-label col-md-3"})
+        <div class="col-md-8">
+            @Html.TextBoxFor(model => model.AppleStore, new {@class = "form-control"})
+            @Html.ValidationMessageFor(model => model.AppleStore, "", new {@class = "text-danger"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.GooglePlayStore, new {@class = "control-label col-md-3"})
+        <div class="col-md-8">
+            @Html.TextBoxFor(model => model.GooglePlayStore, new {@class = "form-control"})
+            @Html.ValidationMessageFor(model => model.GooglePlayStore, "", new {@class = "text-danger"})
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsActive, new { @class = "control-label col-md-3" })
+        <div class="col-md-8">
+            @Html.CheckBoxFor(model => model.IsActive, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>

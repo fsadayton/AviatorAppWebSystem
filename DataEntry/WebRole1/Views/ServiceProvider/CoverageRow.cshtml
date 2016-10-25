@@ -1,0 +1,9 @@
+﻿@using Website.Helpers
+@model Models.ServiceProvider.Coverage
+@using (Html.BeginCollectionItem(ViewData.TemplateInfo.HtmlFieldPrefix + ".coverage"))
+{
+    <div id="@(ViewData.TemplateInfo.HtmlFieldPrefix.Replace("[", "").Replace("]", "").Replace(".", "") + "_row")" class="row bordered-row">
+        @Html.EditorFor(model => model)
+    </div>
+}
+

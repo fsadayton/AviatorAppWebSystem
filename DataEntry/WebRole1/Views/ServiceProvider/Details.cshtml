@@ -1,0 +1,143 @@
+﻿@model Models.WebsiteServiceProvider
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/ServiceProviderDetails.js")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/dataEntry")
+}
+
+<div>
+    <h2>
+    Service Provider Details
+    @if (User.IsInRole("1"))
+    {
+        <a href="@Url.Action("Edit", new {Model.Id})" class="">
+            <i class="fa fa-edit pull-right"></i>
+        </a>
+    }
+    </h2>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dd><br/></dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dd><br/></dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TypeName)
+        </dd>
+
+        <dd><br/></dd>
+
+        @{
+            string rankClass="";
+        }
+
+
+        @switch (Model.DisplayRank)
+        {
+            case 1:
+                rankClass = "ranking-high";
+                break;
+            case 2:
+                rankClass = "ranking-medium";
+                break;
+            case 3:
+                rankClass = "ranking-low";
+                break;
+        }
+        <dt>
+            Display Rank
+        </dt>
+        <dd>
+            <div class="col-md-8">
+                <div class="rankGrouping">
+                    <span id="rank1" class="fa fa-star @rankClass"></span>
+                    <span id="rank2" class="fa @(Model.DisplayRank <= 2 ? "fa-star" : "fa-star-o") @rankClass"></span>
+                    <span id="rank3" class="fa  @(Model.DisplayRank == 1 ? "fa-star" : "fa-star-o") @rankClass"></span>
+                    <label id="rankDescription"></label>
+                </div>
+            </div>
+        </dd>
+
+        <dd><br/></dd>
+
+        <dt>Categories</dt>
+        @foreach (var category in ViewBag.AllCategories)
+        {
+            if (!Model.Services.ServiceAreas.Contains(category.Id))
+            {
+                continue;
+            }
+            <dd>
+                <div class="row categoryRow" id="categoryRow_@category.Id">
+                    <div class="col-md-4">
+                        <span><strong>@category.Name</strong></span>
+                    </div>
+                    <div class="col-md-8 categoryDesc">
+                        @category.Description
+                    </div>
+                </div>
+            </dd>
+        }
+
+        <dd><br/></dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Locations)
+        </dt>
+
+        @if (Model.Locations.Count < 1)
+        {
+            <dd>
+                <p>This service provider has not added any locations yet.</p>
+            </dd>
+        }
+        else
+        {
+            foreach (var item in Model.Locations)
+            {
+                <dd>
+                    <p><strong>Location Name: </strong>@item.Name</p>
+                    <p>@item.Street @item.City @item.StateIdString @item.Zip</p>
+                    <p><strong>Helpline:</strong>@item.Contact.HelpLine</p>
+                    <p><strong>Email: </strong><a href="mailto:@item.Contact.Email" target="_blank">@item.Contact.Email</a>
+                    </p>
+                    <p><strong>Phone #: </strong>@item.Contact.PhoneNumber</p>
+                    <p><strong>Wesbsite: </strong><a href="@item.Contact.Website">@item.Contact.Website</a>
+                    </p>
+
+                    <a href="#" id="toggleCounties">Show covered areas</a>
+                    <br/>
+                    <div id="counties" class="provider-counties-list">
+                        @foreach (var county in item.Coverage)
+                        {
+                            <p>@county.CountyName @county.StateName</p>
+                        }
+                    </div>
+                </dd>
+            }
+        }
+    </dl>
+    @if (User.IsInRole("1"))
+    {
+        <a href="@Url.Action("Index")">Return to List</a>
+    }
+</div>

@@ -1,0 +1,92 @@
+﻿
+@model IEnumerable<Website.Models.ToolViewModel>
+
+@{
+    ViewBag.Title = "Tools";
+}
+
+@section TitleSection {
+
+    <div id="aviatorlandingheader">
+        <div class="col-md-offset-2 col-md-8">
+            <center>
+                <h1 id="landingpgTitle">
+                    Tools
+                </h1>
+            </center>
+            <center><p id="aviatorDescription"><strong>Additional tools and websites.</strong></p></center>
+        </div>
+    </div>
+}
+
+@foreach (var item in Model)
+{
+    var classNames = (item.IsActive) ? "row" : "row warning";
+    <div class="@classNames" style="border-bottom: 1px solid grey; padding-top: 10px;padding-bottom: 10px;">
+        <div class="col-xs-10">
+            <h4 style="display: inline">@item.Name</h4>
+            <div>@Html.DisplayFor(modelItem => item.Description)</div>
+            <div>
+                @if (!string.IsNullOrEmpty(item.WebsiteUrl))
+                {
+                    <strong><a href="@Html.DisplayFor(modelItem => item.WebsiteUrl)" target="_blank" class="confirmation">Visit Website</a></strong>
+                    if (!string.IsNullOrEmpty(item.GooglePlayStore) || !string.IsNullOrEmpty(item.AppleStore))
+                    {
+                        <span> | </span>
+                    }
+                }
+
+                @if (!string.IsNullOrEmpty(item.AppleStore))
+                {
+                    <strong><a href="@Html.DisplayFor(modelItem => item.AppleStore)" target="_blank" class="confirmation">Apple App Store</a></strong>
+                    if (!string.IsNullOrEmpty(item.GooglePlayStore))
+                    {
+                        <span> | </span>
+                    }
+                }
+
+                @if (!string.IsNullOrEmpty(item.GooglePlayStore))
+                {
+                    <strong><a href="@Html.DisplayFor(modelItem => item.GooglePlayStore)" target="_blank" class="confirmation">Google Play Store</a></strong>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+<div class="modal fade" id="confirm-leave" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Disclaimer
+            </div>
+            <div class="modal-body">
+                Since this website is not directly affiliated with AVIATOR, Family Services of Dayton, Ohio
+                is not responsible for the content on this 3rd party site.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <a id="leaveSiteButton" class="btn btn-default btn-ok">OK</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script language="JavaScript">
+        $(document).ready(function () {
+            $('.confirmation').on('click', function (e) {
+                e.preventDefault();
+                $('.confirmation').removeClass('clicked');
+                $(this).addClass('clicked');
+                $("#confirm-leave").modal('show');
+            });
+            
+            $("#leaveSiteButton").click(function () {
+                window.open($('.clicked').attr('href'));
+                $("#confirm-leave").modal('hide');
+            });
+        });
+    </script>
+}
+

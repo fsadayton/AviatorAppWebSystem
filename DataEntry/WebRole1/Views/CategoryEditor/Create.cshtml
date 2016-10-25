@@ -1,0 +1,78 @@
+﻿@model Models.Editors.CategoryEditor
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div>
+        <h4 >Category Editor</h4>
+        <h4 class="form-group col-lg-16">
+            <Strong>
+                Active
+                <div class="toggle-switch-inline">
+                    @Html.EditorFor(model => model.Active, new { htmlAttributes = new { @class = "toggle-switch toggle-switch-round" } })
+                    @Html.LabelFor(model => model.Active, new { dataOn = "Yes", dataOff = "No" })
+                </div>
+            </Strong>
+        </h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <h4 class="form-group col-lg-16">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label required" })
+            <div class="">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </h4>
+
+        <h4 class="form-group col-lg-16">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label required" })
+            <div>
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </h4>
+        <h4 class="form-group col-lg-16"><strong class="required">Type</strong> (Choose one or more)</h4>
+        
+        @foreach (var type in ViewBag.types)
+        {
+            
+            if (type != null)
+            {
+
+                <input class="col-lg-16" type="checkbox" id="categoryTypes_@type.Value" value="@type.Value" name="CategoryTypes"/>
+                <span><Strong>  @type.Text  </Strong></span>
+                
+                <br />
+
+            }
+        }
+        <span>   @Html.ValidationMessageFor(model => model.CategoryTypes, "", new { @class = "text-danger" })  </span>
+        <h4><Strong>
+                Crime
+            </Strong>
+            <div class="toggle-switch-inline">
+                @Html.EditorFor(model => model.Crime, new { htmlAttributes = new { @class = "toggle-switch toggle-switch-round" } })
+                @Html.LabelFor(model => model.Crime, new { dataOn = "Yes", dataOff = "No" })
+            </div>
+        </h4>
+       
+        
+        <div class="form-group">
+            <div >
+                <input type="submit" value="Create" class="btn btn-default"/>
+                &nbsp;
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+                
+        </div>
+    </div>
+}
+
+

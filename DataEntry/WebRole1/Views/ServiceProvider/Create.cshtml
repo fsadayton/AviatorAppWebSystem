@@ -1,0 +1,32 @@
+﻿@using System.Web.Mvc.Html
+@model Models.WebsiteServiceProvider
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    Html.RenderPartial("ServiceProviderForm", Model);
+    
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-offset-1 col-sm-1">
+                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary" })
+            </div>
+            <div class="col-md-offset-8 col-md-2">
+                <input type="submit" value="Create" class="btn btn-primary"/>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/dataEntry")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            serviceProviderPageSetup();
+        });
+    </script>
+}

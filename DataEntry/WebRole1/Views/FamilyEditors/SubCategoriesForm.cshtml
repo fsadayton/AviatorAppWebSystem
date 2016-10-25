@@ -1,0 +1,64 @@
+﻿
+@using System.Web.Mvc.Html
+@model Website.Models.FamilyEditor
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-3 required" })
+        <div class="col-md-9">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, htmlAttributes: new {@class = "control-label col-md-3 required"})
+        <div class="col-md-9">
+            @Html.EditorFor(model => model.Description, new {htmlAttributes = new {@class = "form-control"}})
+            @Html.ValidationMessageFor(model => model.Description, "", new {@class = "text-danger"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsSpecialPopulation, htmlAttributes: new { @class = "control-label col-md-3 required" })
+        <div class="col-md-9">
+            <div class="radio">
+                <label>@Html.RadioButtonFor(m => m.IsSpecialPopulation, true) Yes, this is for a special population.</label>
+            </div>
+            <div class="radio">
+                <label>@Html.RadioButtonFor(m => m.IsSpecialPopulation, false) No, this is a general family.</label>
+                @Html.ValidationMessageFor(model => model.IsSpecialPopulation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Active, htmlAttributes: new { @class = "control-label col-md-3" })
+        <div class="col-md-9">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Active)
+                @Html.ValidationMessageFor(model => model.Active, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <h3 class="required">Categories <span></span> (choose one or more)
+    </h3>
+    @Html.ValidationMessageFor(model => model.CategoryIds, "", new { @class = "text-danger" })
+    @foreach (var category in ViewBag.AllCategories)
+    {
+        <div class="row categoryRow" id="categoryRow_@category.Id">
+            <div class="col-md-4">
+                <input type="checkbox" id="category_@category.Id" value="@category.Id" name="CategoryIds" @( Model.CategoryIds.Contains(category.Id) ? "checked" : "") />
+                <span><strong>@category.Name</strong></span>
+            </div>
+            <div class="col-md-8 categoryDesc">
+                @category.Description
+            </div>
+
+        </div>
+    }
+</div>

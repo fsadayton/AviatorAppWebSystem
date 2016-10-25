@@ -1,0 +1,53 @@
+﻿
+
+<div id="filterFlashMessage" class="alert alert-danger alert-dismissible collapse">
+    <button type="button" class="close"  data-hide="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <div id="errorMessage"></div>
+</div>
+
+<h2>Provider Activity</h2>
+
+<div class="form-group">
+    <div>
+        <label>Pick a time frame.</label>
+    </div>
+    <label for="from">From</label>
+    <input type="text" id="from" name="from">
+    <label for="to">to</label>
+    <input type="text" id="to" name="to">
+    </div>
+<div class="form-group">
+    <label class="control-label" for="optionalProvider">Provider</label>
+    <select class="form-control"type="button" data-toggle="dropdown" id="optionalProvider"></select>
+</div>
+<div class="form-group">
+    <label style="padding:5px">Sort By</label>
+    <div style="padding: 5px;">
+        <select class="btn btn-primary dropdown-toggle" id="sortProviderChanges">
+            <option value="EditedProviderName">Provider</option>
+            <option value="UserLastName">User</option>
+            <option value="EditedDateTime">Time</option>
+        </select>
+        <button class="btn btn-primary" style="padding-top: 7px;"  id="viewchangebtn">View Changes</button>
+    </div>
+</div>
+    <table class="table table-striped">
+        <thead>
+            <tr><th>Provider</th><th>Action</th><th>User</th><th>Date</th></tr>
+        </thead>
+        <tbody id="results"></tbody>
+    </table>
+
+    @section Scripts {
+        <script src="~/Scripts/ProviderActivity.js"></script>
+
+        <script language="javascript">
+            $(document).ready(function () {
+                setupProviderActivity('@Url.Action("GetAllActivity", "ProviderActivity")');
+            });
+
+        </script>
+        <script src="~/Scripts/underscore.js"></script>
+    }

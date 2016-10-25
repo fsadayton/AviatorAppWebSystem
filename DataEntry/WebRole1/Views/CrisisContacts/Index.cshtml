@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section TitleSection {
+
+    <div id="aviatorlandingheader">
+        <div class="col-md-offset-2 col-md-8">
+            <center>
+                <h1 id="landingpgTitle">
+                    Crisis Contacts
+                </h1>
+            </center>
+            <center><p id="aviatorDescription"><strong>Access to 24-hour manned phone lines for many different crises, such as suicide prevention and domestic violence help.</strong></p></center>
+        </div>
+    </div>
+}
+<div id="spinner" class="panel panel-default panel-spinner">
+    <i class="fa fa-spinner fa-spin"></i>
+</div>
+<div id="hotLine" class="list-group">
+
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/HotLineScript")
+    <script language="javascript">
+
+        $(document).ready(function() {
+        });
+
+    </script>
+}

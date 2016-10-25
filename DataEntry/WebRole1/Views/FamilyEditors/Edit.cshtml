@@ -1,0 +1,35 @@
+﻿@model Website.Models.FamilyEditor
+
+@{
+    ViewBag.Title = "Edit";
+}
+@{
+    string message = TempData["Error"] as string;
+    if (!String.IsNullOrEmpty(message))
+    {
+        <div class="Error" style="color:red">
+            <h4>@message</h4>
+        </div>
+    }
+}
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    Html.RenderPartial("SubCategoriesForm", Model);
+    
+    <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-default" />
+    </div>
+    <div>
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}
+
+
+

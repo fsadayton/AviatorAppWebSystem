@@ -1,0 +1,49 @@
+﻿@model System.Collections.Generic.IEnumerable<Website.Models.DisplayServiceProvider>
+@{
+    ViewBag.Title = "CompensationProviderList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section TitleSection {
+
+        <div id="aviatorlandingheader">
+            <div class="col-md-offset-2 col-md-8">
+                <center><h1 id="landingpgTitle">Victim Compensation</h1></center>
+                <center><p id="aviatorDescription"><strong>Access information regarding possible financial assistance after a crime.</strong></p></center>
+            </div>
+        </div>
+}
+
+<div>
+    <div class="page-header clearfix page-header-fixed">
+        <div class="pull-left">
+            <h3 id="sectionName"></h3>
+        </div>
+        <div id="filterButton" class="pull-right btn btn-default" style="margin-top: 13px"><i class="fa fa-filter"></i> Filter
+        </div>
+    </div>
+    <div class="mapListWrapper">
+        <div class="mapImage">
+            <div id='myMap' style="position: relative; height: 300px;"></div>
+        </div>
+        <div class="mapList" style="height: 100%">
+            <div id="spinner" class="panel panel-default panel-spinner"><i class="fa fa-spinner fa-spin"></i>
+            </div>
+            <ul id="providerList" class="list-group"></ul>
+        </div>
+    </div>
+    <div id="providerType"style="visibility: hidden" value="1"></div>
+</div>
+<br/>
+@Html.Partial("_ServiceProviderFilterPartial")
+@section Scripts {
+    @Scripts.Render("~/bundles/ServiceProviderSpecific")
+
+    s<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+    <script language="javascript">
+      $(document).ready(function () {
+            serviceProviderDisplay.populate(getVictimCompensationCategories, getVictimCompensationPath, getVictimCompensationDetails);
+
+      });
+    </script>
+}

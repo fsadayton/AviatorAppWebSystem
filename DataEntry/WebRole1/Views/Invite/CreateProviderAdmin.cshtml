@@ -1,0 +1,61 @@
+﻿@using Models.AccountManagement
+@model InviteViewModel
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+@section scripts {
+    @Scripts.Render("~/bundles/dataEntry");
+        <script type="text/javascript">
+            $(document).ready(function () {
+                ServiceProviderTypeAhead.getServiceProviders();
+            });
+        </script>
+    }
+    
+    <div class="">
+        <h3>Add a Service Provider Administrator</h3>
+        <hr/>
+        @if (TempData["Error"] != null && TempData["Error"].ToString() != string.Empty)
+        {
+            <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> @TempData["Error"]</div>
+        }
+        <p>
+            Enter the email address for the person you would like to add as a Service Provider Administrator.
+            An email will be sent to their email address to set up an account.
+        </p>
+
+        <div id="serviceProvider" class="form-group">
+            @Html.LabelFor(model => model.ServiceProviderId, new {@class="required"})
+            <div>
+                <div id="spinner" class="panel panel-default form-spinner"><i class="fa fa-spinner fa-spin"></i></div>
+                <input id="ServiceProviderName" class="typeahead form-control" type="text" placeholder="Enter a Service Provider">
+                @Html.HiddenFor(model => model.ServiceProviderId)
+            </div>
+        </div>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.InviteeEmailAddress,  new { @class = "required" })
+            <div class="">
+                @Html.EditorFor(model => model.InviteeEmailAddress, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter an Email Address" } })
+                @Html.ValidationMessageFor(model => model.InviteeEmailAddress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.HiddenFor(model => model.UserRoleType)
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <a href="@Url.Action("Index", "Invite")">
+                        <div class="btn btn-default btn-block">Cancel</div>
+                    </a>
+                </div>
+                <div class="col-sm-offset-8 col-sm-2">
+                    <input type="submit" value="Create" class="btn btn-primary btn-block" />
+                </div>
+            </div>
+        </div>
+    </div>
+}

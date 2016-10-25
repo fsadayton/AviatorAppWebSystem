@@ -1,0 +1,86 @@
+﻿@using Models.AccountManagement
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Administration Control Panel</h2>
+<br/>
+
+<div class="row">
+    <div class="col-xs-11">
+        <h4><a href="@Url.Action("Index", "ServiceProvider")"><object type="image/svg+xml" data="~/Content/Images/charity.svg" class="adminMenuImage"></object><span class="adminMenuTitle">Service Providers</span></a></h4>
+    </div>
+    <div class="col-xs-1">
+        <a href="@Url.Action("Create", "ServiceProvider")" class="headerButton">
+            <h2 class="larger-fa-inline">
+                <i class="fa fa-plus"></i>
+            </h2>
+        </a>
+    </div>
+</div>
+
+<hr/>
+
+
+<div class="row">
+    <div class="col-xs-11">
+        <a href="@Url.Action("Index", "CrisisContactAdmin")"><object type="image/svg+xml" data="~/Content/Images/2440.svg" class="adminMenuImage"></object><span class="adminMenuTitle">Crisis Contacts</span></a>
+    </div>
+    <div class="col-xs-1">
+        <a href="@Url.Action("Create", "CrisisContactAdmin")" class="headerButton">
+            <h2 class="larger-fa-inline">
+                <i class="fa fa-plus"></i>
+            </h2>
+        </a>
+    </div>
+</div>
+
+<hr/>
+
+<div class="row">
+    <div class="col-xs-11">
+        <a href="@Url.Action("Index", "ToolAdmin")"><object type="image/svg+xml" data="~/Content/Images/screwdriver-and-wrench-crossed.svg" class="adminMenuImage"></object><span class="adminMenuTitle">Tools</span></a>
+    </div>
+    <div class="col-xs-1">
+        <a href="@Url.Action("Create", "ToolAdmin")" class="headerButton">
+            <h2 class="larger-fa-inline">
+                <i class="fa fa-plus"></i>
+            </h2>
+        </a>
+    </div>
+</div>
+
+<hr/>
+<div class="row">
+    <div class="col-xs-11">
+        <h4><a href="@Url.Action("Index", "FamilyEditors")"><object type="image/svg+xml" data="~/Content/Images/hierarchical-structure.svg" class="adminMenuImage"></object><span class="adminMenuTitle">Family Editor</span></a></h4>
+    </div>
+    <div class="col-xs-1">
+        <a href="@Url.Action("Create", "FamilyEditors")" class="headerButton">
+            <h2 class="larger-fa-inline"><i class="fa fa-plus"></i>
+            </h2></a>
+    </div>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-xs-11">
+        <a href="@Url.Action("Index","CategoryEditor")"><object type="image/svg+xml" data="~/Content/Images/settings-for-categories.svg" class="adminMenuImage"></object><span class="adminMenuTitle">Service Provider Categories Editor</span></a>
+    </div>
+    <div class="col-xs-1">
+        <a href="@Url.Action("Create", "CategoryEditor")" class="headerButton"><h2 class="larger-fa-inline"><i class="fa fa-plus"></i></h2></a>
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-xs-1">
+        <a href="@Url.Action("Index", "AccountAdmin")"><object type="image/svg+xml" data="~/Content/Images/admin-with-cogwheels.svg" class="adminMenuImage"></object></a>
+    </div>
+    <div class="col-xs-11">
+        <a href="@Url.Action("Index", "AccountAdmin")"><span class="adminMenuTitle" style="top: 0;">User Management</span></a><br/>
+        <a href="@Url.Action("Create", "Invite", new {userRoleType = (int) UserRoleType.Admin})"><strong>Invite New Admin</strong></a> &nbsp;|&nbsp;
+        <a href="@Url.Action("Create", "Invite", new {userRoleType = (int) UserRoleType.Provider})"><strong>Invite New Service Provider</strong></a>
+    </div>
+</div>

@@ -1,0 +1,1685 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ArmorAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CategoryTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="ServiceTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="HelpLine" Type="nvarchar" MaxLength="20" />
+          <Property Name="Website" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ContactPerson">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="JobTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactID" Type="int" />
+        </EntityType>
+        <EntityType Name="Counties">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Abbreviation" Type="nvarchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CrisisContact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ContactId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Family">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="SpecialPopulation" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FamilyServices">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FamilyID" Type="int" Nullable="false" />
+          <Property Name="ServiceID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Invites">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Token" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="RoleTypeID" Type="int" Nullable="false" />
+          <Property Name="ProviderId" Type="int" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="StateID" Type="int" Nullable="false" />
+          <Property Name="Zip" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="ProviderID" Type="int" Nullable="false" />
+          <Property Name="Display" Type="bit" Nullable="false" />
+          <Property Name="ContactID" Type="int" Nullable="false" />
+          <Property Name="ContactPersonID" Type="int" />
+          <Property Name="Name" Type="text" />
+        </EntityType>
+        <EntityType Name="ProviderCoverage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="AreaID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProviderServiceCategories">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Crime" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProviderServices">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProviderID" Type="int" Nullable="false" />
+          <Property Name="ServiceID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoleTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceProvider">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProviderName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DisplayRank" Type="int" Nullable="false" />
+          <Property Name="ServiceTypes" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceProviderEdits">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="DateTime" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ProviderId" Type="int" />
+          <Property Name="Action" Type="nvarchar" MaxLength="10" />
+          <Property Name="DeletedProviderName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ServiceTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Abbreviation" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tools">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Website" Type="nvarchar" MaxLength="100" />
+          <Property Name="AppleStoreWebsite" Type="nvarchar" MaxLength="100" />
+          <Property Name="GooglePlayWebsite" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactID" Type="int" Nullable="false" />
+          <Property Name="CredentialID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimaryProviderCategoryID" Type="int" />
+          <Property Name="ServiceProviderID" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserCredential">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ResetToken" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="RoleTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Address_0">
+          <End Role="State" Type="Self.State" Multiplicity="1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_1">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_2">
+          <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceProvider">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="ProviderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryTypesCategory_0">
+          <End Role="ProviderServiceCategories" Type="Self.ProviderServiceCategories" Multiplicity="1" />
+          <End Role="CategoryTypes" Type="Self.CategoryTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProviderServiceCategories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CategoryTypes">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryTypesServiceType_0">
+          <End Role="ServiceTypes" Type="Self.ServiceTypes" Multiplicity="1" />
+          <End Role="CategoryTypes" Type="Self.CategoryTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CategoryTypes">
+              <PropertyRef Name="ServiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactPerson_0">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ContactPerson" Type="Self.ContactPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactPerson">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Counties_0">
+          <End Role="State" Type="Self.State" Multiplicity="1" />
+          <End Role="Counties" Type="Self.Counties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Counties">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_crisisContact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CrisisContact" Type="Self.CrisisContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CrisisContact">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamilyServices_0">
+          <End Role="Family" Type="Self.Family" Multiplicity="1" />
+          <End Role="FamilyServices" Type="Self.FamilyServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Family">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FamilyServices">
+              <PropertyRef Name="FamilyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamilyServices_1">
+          <End Role="ProviderServiceCategories" Type="Self.ProviderServiceCategories" Multiplicity="1" />
+          <End Role="FamilyServices" Type="Self.FamilyServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProviderServiceCategories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FamilyServices">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvitesCreator_0">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Invites" Type="Self.Invites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invites">
+              <PropertyRef Name="CreatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvitesRole_0">
+          <End Role="RoleTypes" Type="Self.RoleTypes" Multiplicity="1" />
+          <End Role="Invites" Type="Self.Invites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invites">
+              <PropertyRef Name="RoleTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_0">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_1">
+          <End Role="ContactPerson" Type="Self.ContactPerson" Multiplicity="0..1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactPerson">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="ContactPersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProviderCoverage_0">
+          <End Role="Location" Type="Self.Location" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProviderCoverage" Type="Self.ProviderCoverage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProviderCoverage">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProviderCoverage_1">
+          <End Role="Counties" Type="Self.Counties" Multiplicity="1" />
+          <End Role="ProviderCoverage" Type="Self.ProviderCoverage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Counties">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProviderCoverage">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProviderServices_0">
+          <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="1" />
+          <End Role="ProviderServices" Type="Self.ProviderServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceProvider">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProviderServices">
+              <PropertyRef Name="ProviderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProviderServices_1">
+          <End Role="ProviderServiceCategories" Type="Self.ProviderServiceCategories" Multiplicity="1" />
+          <End Role="ProviderServices" Type="Self.ProviderServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProviderServiceCategories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProviderServices">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceProvider_0">
+          <End Role="ServiceTypes" Type="Self.ServiceTypes" Multiplicity="1" />
+          <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ServiceProvider">
+              <PropertyRef Name="ServiceTypes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceProviderEditsProviderId_0">
+          <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="0..1" />
+          <End Role="ServiceProviderEdits" Type="Self.ServiceProviderEdits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceProvider">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ServiceProviderEdits">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceProviderEditsUser_0">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="ServiceProviderEdits" Type="Self.ServiceProviderEdits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ServiceProviderEdits">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_State_0">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="State" Type="Self.State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserContact_0">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserCredential_0">
+          <End Role="UserCredential" Type="Self.UserCredential" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserCredential">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CredentialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleRole_0">
+          <End Role="RoleTypes" Type="Self.RoleTypes" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="RoleTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleUser_0">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserServiceProvider_0">
+          <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceProvider">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ServiceProviderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ArmorAppModelStoreContainer">
+          <EntitySet Name="CategoryTypes" EntityType="Self.CategoryTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactPerson" EntityType="Self.ContactPerson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Counties" EntityType="Self.Counties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CrisisContact" EntityType="Self.CrisisContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Family" EntityType="Self.Family" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FamilyServices" EntityType="Self.FamilyServices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invites" EntityType="Self.Invites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProviderCoverage" EntityType="Self.ProviderCoverage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProviderServiceCategories" EntityType="Self.ProviderServiceCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProviderServices" EntityType="Self.ProviderServices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleTypes" EntityType="Self.RoleTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceProvider" EntityType="Self.ServiceProvider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceProviderEdits" EntityType="Self.ServiceProviderEdits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceTypes" EntityType="Self.ServiceTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tools" EntityType="Self.Tools" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserCredential" EntityType="Self.UserCredential" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Address_0" Association="Self.FK_Address_0">
+            <End Role="State" EntitySet="State" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_1" Association="Self.FK_Address_1">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_2" Association="Self.FK_Address_2">
+            <End Role="ServiceProvider" EntitySet="ServiceProvider" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryTypesCategory_0" Association="Self.FK_CategoryTypesCategory_0">
+            <End Role="ProviderServiceCategories" EntitySet="ProviderServiceCategories" />
+            <End Role="CategoryTypes" EntitySet="CategoryTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryTypesServiceType_0" Association="Self.FK_CategoryTypesServiceType_0">
+            <End Role="ServiceTypes" EntitySet="ServiceTypes" />
+            <End Role="CategoryTypes" EntitySet="CategoryTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactPerson_0" Association="Self.FK_ContactPerson_0">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="ContactPerson" EntitySet="ContactPerson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Counties_0" Association="Self.FK_Counties_0">
+            <End Role="State" EntitySet="State" />
+            <End Role="Counties" EntitySet="Counties" />
+          </AssociationSet>
+          <AssociationSet Name="fk_crisisContact" Association="Self.fk_crisisContact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="CrisisContact" EntitySet="CrisisContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamilyServices_0" Association="Self.FK_FamilyServices_0">
+            <End Role="Family" EntitySet="Family" />
+            <End Role="FamilyServices" EntitySet="FamilyServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamilyServices_1" Association="Self.FK_FamilyServices_1">
+            <End Role="ProviderServiceCategories" EntitySet="ProviderServiceCategories" />
+            <End Role="FamilyServices" EntitySet="FamilyServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvitesCreator_0" Association="Self.FK_InvitesCreator_0">
+            <End Role="User" EntitySet="User" />
+            <End Role="Invites" EntitySet="Invites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvitesRole_0" Association="Self.FK_InvitesRole_0">
+            <End Role="RoleTypes" EntitySet="RoleTypes" />
+            <End Role="Invites" EntitySet="Invites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_0" Association="Self.FK_Location_0">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_1" Association="Self.FK_Location_1">
+            <End Role="ContactPerson" EntitySet="ContactPerson" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProviderCoverage_0" Association="Self.FK_ProviderCoverage_0">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="ProviderCoverage" EntitySet="ProviderCoverage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProviderCoverage_1" Association="Self.FK_ProviderCoverage_1">
+            <End Role="Counties" EntitySet="Counties" />
+            <End Role="ProviderCoverage" EntitySet="ProviderCoverage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProviderServices_0" Association="Self.FK_ProviderServices_0">
+            <End Role="ServiceProvider" EntitySet="ServiceProvider" />
+            <End Role="ProviderServices" EntitySet="ProviderServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProviderServices_1" Association="Self.FK_ProviderServices_1">
+            <End Role="ProviderServiceCategories" EntitySet="ProviderServiceCategories" />
+            <End Role="ProviderServices" EntitySet="ProviderServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceProvider_0" Association="Self.FK_ServiceProvider_0">
+            <End Role="ServiceTypes" EntitySet="ServiceTypes" />
+            <End Role="ServiceProvider" EntitySet="ServiceProvider" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceProviderEditsProviderId_0" Association="Self.FK_ServiceProviderEditsProviderId_0">
+            <End Role="ServiceProvider" EntitySet="ServiceProvider" />
+            <End Role="ServiceProviderEdits" EntitySet="ServiceProviderEdits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceProviderEditsUser_0" Association="Self.FK_ServiceProviderEditsUser_0">
+            <End Role="User" EntitySet="User" />
+            <End Role="ServiceProviderEdits" EntitySet="ServiceProviderEdits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_State_0" Association="Self.FK_State_0">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="State" EntitySet="State" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserContact_0" Association="Self.FK_UserContact_0">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserCredential_0" Association="Self.FK_UserCredential_0">
+            <End Role="UserCredential" EntitySet="UserCredential" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleRole_0" Association="Self.FK_UserRoleRole_0">
+            <End Role="RoleTypes" EntitySet="RoleTypes" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleUser_0" Association="Self.FK_UserRoleUser_0">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserServiceProvider_0" Association="Self.FK_UserServiceProvider_0">
+            <End Role="ServiceProvider" EntitySet="ServiceProvider" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ArmorAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ArmorAppEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ServiceProviderEdits" EntityType="ArmorAppModel.ServiceProviderEdit" />
+          <EntitySet Name="CategoryTypes" EntityType="ArmorAppModel.CategoryType" />
+          <EntitySet Name="Contacts" EntityType="ArmorAppModel.Contact" />
+          <EntitySet Name="ContactPersons" EntityType="ArmorAppModel.ContactPerson" />
+          <EntitySet Name="Counties" EntityType="ArmorAppModel.County" />
+          <EntitySet Name="Countries" EntityType="ArmorAppModel.Country" />
+          <EntitySet Name="CrisisContacts" EntityType="ArmorAppModel.CrisisContact" />
+          <EntitySet Name="Families" EntityType="ArmorAppModel.Family" />
+          <EntitySet Name="FamilyServices" EntityType="ArmorAppModel.FamilyService" />
+          <EntitySet Name="Invites" EntityType="ArmorAppModel.Invite" />
+          <EntitySet Name="Locations" EntityType="ArmorAppModel.Location" />
+          <EntitySet Name="ProviderCoverages" EntityType="ArmorAppModel.ProviderCoverage" />
+          <EntitySet Name="ProviderServiceCategories" EntityType="ArmorAppModel.ProviderServiceCategory" />
+          <EntitySet Name="ProviderServices" EntityType="ArmorAppModel.ProviderService" />
+          <EntitySet Name="RoleTypes" EntityType="ArmorAppModel.RoleType" />
+          <EntitySet Name="ServiceProviders" EntityType="ArmorAppModel.ServiceProvider" />
+          <EntitySet Name="ServiceTypes" EntityType="ArmorAppModel.ServiceType" />
+          <EntitySet Name="States" EntityType="ArmorAppModel.State" />
+          <EntitySet Name="Tools" EntityType="ArmorAppModel.Tool" />
+          <EntitySet Name="Users" EntityType="ArmorAppModel.User" />
+          <EntitySet Name="UserCredentials" EntityType="ArmorAppModel.UserCredential" />
+          <EntitySet Name="UserRoles" EntityType="ArmorAppModel.UserRole" />
+          <AssociationSet Name="FK_CategoryTypesCategory_0" Association="ArmorAppModel.FK_CategoryTypesCategory_0">
+            <End Role="ProviderServiceCategory" EntitySet="ProviderServiceCategories" />
+            <End Role="CategoryType" EntitySet="CategoryTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryTypesServiceType_0" Association="ArmorAppModel.FK_CategoryTypesServiceType_0">
+            <End Role="ServiceType" EntitySet="ServiceTypes" />
+            <End Role="CategoryType" EntitySet="CategoryTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactPerson_0" Association="ArmorAppModel.FK_ContactPerson_0">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="ContactPerson" EntitySet="ContactPersons" />
+          </AssociationSet>
+          <AssociationSet Name="fk_crisisContact" Association="ArmorAppModel.fk_crisisContact">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="CrisisContact" EntitySet="CrisisContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_0" Association="ArmorAppModel.FK_Location_0">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserContact_0" Association="ArmorAppModel.FK_UserContact_0">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_1" Association="ArmorAppModel.FK_Location_1">
+            <End Role="ContactPerson" EntitySet="ContactPersons" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Counties_0" Association="ArmorAppModel.FK_Counties_0">
+            <End Role="State" EntitySet="States" />
+            <End Role="County" EntitySet="Counties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProviderCoverage_1" Association="ArmorAppModel.FK_ProviderCoverage_1">
+            <End Role="County" EntitySet="Counties" />
+            <End Role="ProviderCoverage" EntitySet="ProviderCoverages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_1" Association="ArmorAppModel.FK_Address_1">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_State_0" Association="ArmorAppModel.FK_State_0">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="State" EntitySet="States" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamilyServices_0" Association="ArmorAppModel.FK_FamilyServices_0">
+            <End Role="Family" EntitySet="Families" />
+            <End Role="FamilyService" EntitySet="FamilyServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamilyServices_1" Association="ArmorAppModel.FK_FamilyServices_1">
+            <End Role="ProviderServiceCategory" EntitySet="ProviderServiceCategories" />
+            <End Role="FamilyService" EntitySet="FamilyServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvitesCreator_0" Association="ArmorAppModel.FK_InvitesCreator_0">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Invite" EntitySet="Invites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvitesRole_0" Association="ArmorAppModel.FK_InvitesRole_0">
+            <End Role="RoleType" EntitySet="RoleTypes" />
+            <End Role="Invite" EntitySet="Invites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_0" Association="ArmorAppModel.FK_Address_0">
+            <End Role="State" EntitySet="States" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_2" Association="ArmorAppModel.FK_Address_2">
+            <End Role="ServiceProvider" EntitySet="ServiceProviders" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProviderCoverage_0" Association="ArmorAppModel.FK_ProviderCoverage_0">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="ProviderCoverage" EntitySet="ProviderCoverages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProviderServices_1" Association="ArmorAppModel.FK_ProviderServices_1">
+            <End Role="ProviderServiceCategory" EntitySet="ProviderServiceCategories" />
+            <End Role="ProviderService" EntitySet="ProviderServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProviderServices_0" Association="ArmorAppModel.FK_ProviderServices_0">
+            <End Role="ServiceProvider" EntitySet="ServiceProviders" />
+            <End Role="ProviderService" EntitySet="ProviderServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleRole_0" Association="ArmorAppModel.FK_UserRoleRole_0">
+            <End Role="RoleType" EntitySet="RoleTypes" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceProvider_0" Association="ArmorAppModel.FK_ServiceProvider_0">
+            <End Role="ServiceType" EntitySet="ServiceTypes" />
+            <End Role="ServiceProvider" EntitySet="ServiceProviders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceProviderEditsProviderId_0" Association="ArmorAppModel.FK_ServiceProviderEditsProviderId_0">
+            <End Role="ServiceProvider" EntitySet="ServiceProviders" />
+            <End Role="ServiceProviderEdit" EntitySet="ServiceProviderEdits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserServiceProvider_0" Association="ArmorAppModel.FK_UserServiceProvider_0">
+            <End Role="ServiceProvider" EntitySet="ServiceProviders" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceProviderEditsUser_0" Association="ArmorAppModel.FK_ServiceProviderEditsUser_0">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ServiceProviderEdit" EntitySet="ServiceProviderEdits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserCredential_0" Association="ArmorAppModel.FK_UserCredential_0">
+            <End Role="UserCredential" EntitySet="UserCredentials" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleUser_0" Association="ArmorAppModel.FK_UserRoleUser_0">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="ServiceProviderEdit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="ProviderId" Type="Int32" />
+          <Property Name="Action" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DeletedProviderName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ServiceProvider" Relationship="ArmorAppModel.FK_ServiceProviderEditsProviderId_0" FromRole="ServiceProviderEdit" ToRole="ServiceProvider" />
+          <NavigationProperty Name="User" Relationship="ArmorAppModel.FK_ServiceProviderEditsUser_0" FromRole="ServiceProviderEdit" ToRole="User" />
+          </EntityType>
+        <EntityType Name="CategoryType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="ServiceTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProviderServiceCategory" Relationship="ArmorAppModel.FK_CategoryTypesCategory_0" FromRole="CategoryType" ToRole="ProviderServiceCategory" />
+          <NavigationProperty Name="ServiceType" Relationship="ArmorAppModel.FK_CategoryTypesServiceType_0" FromRole="CategoryType" ToRole="ServiceType" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="HelpLine" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ContactPersons" Relationship="ArmorAppModel.FK_ContactPerson_0" FromRole="Contact" ToRole="ContactPerson" />
+          <NavigationProperty Name="CrisisContacts" Relationship="ArmorAppModel.fk_crisisContact" FromRole="Contact" ToRole="CrisisContact" />
+          <NavigationProperty Name="Locations" Relationship="ArmorAppModel.FK_Location_0" FromRole="Contact" ToRole="Location" />
+          <NavigationProperty Name="Users" Relationship="ArmorAppModel.FK_UserContact_0" FromRole="Contact" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ContactPerson">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JobTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactID" Type="Int32" />
+          <NavigationProperty Name="Contact" Relationship="ArmorAppModel.FK_ContactPerson_0" FromRole="ContactPerson" ToRole="Contact" />
+          <NavigationProperty Name="Locations" Relationship="ArmorAppModel.FK_Location_1" FromRole="ContactPerson" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="County">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="State" Relationship="ArmorAppModel.FK_Counties_0" FromRole="County" ToRole="State" />
+          <NavigationProperty Name="ProviderCoverages" Relationship="ArmorAppModel.FK_ProviderCoverage_1" FromRole="County" ToRole="ProviderCoverage" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Abbreviation" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Locations" Relationship="ArmorAppModel.FK_Address_1" FromRole="Country" ToRole="Location" />
+          <NavigationProperty Name="States" Relationship="ArmorAppModel.FK_State_0" FromRole="Country" ToRole="State" />
+        </EntityType>
+        <EntityType Name="CrisisContact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Contact" Relationship="ArmorAppModel.fk_crisisContact" FromRole="CrisisContact" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="Family">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="SpecialPopulation" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="FamilyServices" Relationship="ArmorAppModel.FK_FamilyServices_0" FromRole="Family" ToRole="FamilyService" />
+        </EntityType>
+        <EntityType Name="FamilyService">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FamilyID" Type="Int32" Nullable="false" />
+          <Property Name="ServiceID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Family" Relationship="ArmorAppModel.FK_FamilyServices_0" FromRole="FamilyService" ToRole="Family" />
+          <NavigationProperty Name="ProviderServiceCategory" Relationship="ArmorAppModel.FK_FamilyServices_1" FromRole="FamilyService" ToRole="ProviderServiceCategory" />
+        </EntityType>
+        <EntityType Name="Invite">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Token" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="RoleTypeID" Type="Int32" Nullable="false" />
+          <Property Name="ProviderId" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="ArmorAppModel.FK_InvitesCreator_0" FromRole="Invite" ToRole="User" />
+          <NavigationProperty Name="RoleType" Relationship="ArmorAppModel.FK_InvitesRole_0" FromRole="Invite" ToRole="RoleType" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Street" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StateID" Type="Int32" Nullable="false" />
+          <Property Name="Zip" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="ProviderID" Type="Int32" Nullable="false" />
+          <Property Name="Display" Type="Boolean" Nullable="false" />
+          <Property Name="ContactID" Type="Int32" Nullable="false" />
+          <Property Name="ContactPersonID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Contact" Relationship="ArmorAppModel.FK_Location_0" FromRole="Location" ToRole="Contact" />
+          <NavigationProperty Name="ContactPerson" Relationship="ArmorAppModel.FK_Location_1" FromRole="Location" ToRole="ContactPerson" />
+          <NavigationProperty Name="Country" Relationship="ArmorAppModel.FK_Address_1" FromRole="Location" ToRole="Country" />
+          <NavigationProperty Name="State" Relationship="ArmorAppModel.FK_Address_0" FromRole="Location" ToRole="State" />
+          <NavigationProperty Name="ServiceProvider" Relationship="ArmorAppModel.FK_Address_2" FromRole="Location" ToRole="ServiceProvider" />
+          <NavigationProperty Name="ProviderCoverages" Relationship="ArmorAppModel.FK_ProviderCoverage_0" FromRole="Location" ToRole="ProviderCoverage" />
+        </EntityType>
+        <EntityType Name="ProviderCoverage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="AreaID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="County" Relationship="ArmorAppModel.FK_ProviderCoverage_1" FromRole="ProviderCoverage" ToRole="County" />
+          <NavigationProperty Name="Location" Relationship="ArmorAppModel.FK_ProviderCoverage_0" FromRole="ProviderCoverage" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="ProviderServiceCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Crime" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CategoryTypes" Relationship="ArmorAppModel.FK_CategoryTypesCategory_0" FromRole="ProviderServiceCategory" ToRole="CategoryType" />
+          <NavigationProperty Name="FamilyServices" Relationship="ArmorAppModel.FK_FamilyServices_1" FromRole="ProviderServiceCategory" ToRole="FamilyService" />
+          <NavigationProperty Name="ProviderServices" Relationship="ArmorAppModel.FK_ProviderServices_1" FromRole="ProviderServiceCategory" ToRole="ProviderService" />
+        </EntityType>
+        <EntityType Name="ProviderService">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProviderID" Type="Int32" Nullable="false" />
+          <Property Name="ServiceID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProviderServiceCategory" Relationship="ArmorAppModel.FK_ProviderServices_1" FromRole="ProviderService" ToRole="ProviderServiceCategory" />
+          <NavigationProperty Name="ServiceProvider" Relationship="ArmorAppModel.FK_ProviderServices_0" FromRole="ProviderService" ToRole="ServiceProvider" />
+        </EntityType>
+        <EntityType Name="RoleType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Invites" Relationship="ArmorAppModel.FK_InvitesRole_0" FromRole="RoleType" ToRole="Invite" />
+          <NavigationProperty Name="UserRoles" Relationship="ArmorAppModel.FK_UserRoleRole_0" FromRole="RoleType" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="ServiceProvider">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProviderName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayRank" Type="Int32" Nullable="false" />
+          <Property Name="ServiceTypes" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Locations" Relationship="ArmorAppModel.FK_Address_2" FromRole="ServiceProvider" ToRole="Location" />
+          <NavigationProperty Name="ProviderServices" Relationship="ArmorAppModel.FK_ProviderServices_0" FromRole="ServiceProvider" ToRole="ProviderService" />
+          <NavigationProperty Name="ServiceType" Relationship="ArmorAppModel.FK_ServiceProvider_0" FromRole="ServiceProvider" ToRole="ServiceType" />
+          <NavigationProperty Name="ServiceProviderEdits" Relationship="ArmorAppModel.FK_ServiceProviderEditsProviderId_0" FromRole="ServiceProvider" ToRole="ServiceProviderEdit" />
+          <NavigationProperty Name="Users" Relationship="ArmorAppModel.FK_UserServiceProvider_0" FromRole="ServiceProvider" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ServiceType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CategoryTypes" Relationship="ArmorAppModel.FK_CategoryTypesServiceType_0" FromRole="ServiceType" ToRole="CategoryType" />
+          <NavigationProperty Name="ServiceProviders" Relationship="ArmorAppModel.FK_ServiceProvider_0" FromRole="ServiceType" ToRole="ServiceProvider" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Abbreviation" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Counties" Relationship="ArmorAppModel.FK_Counties_0" FromRole="State" ToRole="County" />
+          <NavigationProperty Name="Country" Relationship="ArmorAppModel.FK_State_0" FromRole="State" ToRole="Country" />
+          <NavigationProperty Name="Locations" Relationship="ArmorAppModel.FK_Address_0" FromRole="State" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="Tool">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Website" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AppleStoreWebsite" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GooglePlayWebsite" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactID" Type="Int32" Nullable="false" />
+          <Property Name="CredentialID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryProviderCategoryID" Type="Int32" />
+          <Property Name="ServiceProviderID" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Contact" Relationship="ArmorAppModel.FK_UserContact_0" FromRole="User" ToRole="Contact" />
+          <NavigationProperty Name="Invites" Relationship="ArmorAppModel.FK_InvitesCreator_0" FromRole="User" ToRole="Invite" />
+          <NavigationProperty Name="ServiceProvider" Relationship="ArmorAppModel.FK_UserServiceProvider_0" FromRole="User" ToRole="ServiceProvider" />
+          <NavigationProperty Name="ServiceProviderEdits" Relationship="ArmorAppModel.FK_ServiceProviderEditsUser_0" FromRole="User" ToRole="ServiceProviderEdit" />
+          <NavigationProperty Name="UserCredential" Relationship="ArmorAppModel.FK_UserCredential_0" FromRole="User" ToRole="UserCredential" />
+          <NavigationProperty Name="UserRoles" Relationship="ArmorAppModel.FK_UserRoleUser_0" FromRole="User" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="UserCredential">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordHash" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ResetToken" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="ArmorAppModel.FK_UserCredential_0" FromRole="UserCredential" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="RoleTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RoleType" Relationship="ArmorAppModel.FK_UserRoleRole_0" FromRole="UserRole" ToRole="RoleType" />
+          <NavigationProperty Name="User" Relationship="ArmorAppModel.FK_UserRoleUser_0" FromRole="UserRole" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_CategoryTypesCategory_0">
+          <End Type="ArmorAppModel.ProviderServiceCategory" Role="ProviderServiceCategory" Multiplicity="1" />
+          <End Type="ArmorAppModel.CategoryType" Role="CategoryType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProviderServiceCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CategoryType">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryTypesServiceType_0">
+          <End Type="ArmorAppModel.ServiceType" Role="ServiceType" Multiplicity="1" />
+          <End Type="ArmorAppModel.CategoryType" Role="CategoryType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CategoryType">
+              <PropertyRef Name="ServiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactPerson_0">
+          <End Type="ArmorAppModel.Contact" Role="Contact" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ArmorAppModel.ContactPerson" Role="ContactPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactPerson">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_crisisContact">
+          <End Type="ArmorAppModel.Contact" Role="Contact" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ArmorAppModel.CrisisContact" Role="CrisisContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CrisisContact">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_0">
+          <End Type="ArmorAppModel.Contact" Role="Contact" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ArmorAppModel.Location" Role="Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserContact_0">
+          <End Type="ArmorAppModel.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="ArmorAppModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_1">
+          <End Type="ArmorAppModel.ContactPerson" Role="ContactPerson" Multiplicity="0..1" />
+          <End Type="ArmorAppModel.Location" Role="Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactPerson">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="ContactPersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Counties_0">
+          <End Type="ArmorAppModel.State" Role="State" Multiplicity="1" />
+          <End Type="ArmorAppModel.County" Role="County" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="County">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProviderCoverage_1">
+          <End Type="ArmorAppModel.County" Role="County" Multiplicity="1" />
+          <End Type="ArmorAppModel.ProviderCoverage" Role="ProviderCoverage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="County">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProviderCoverage">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_1">
+          <End Type="ArmorAppModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="ArmorAppModel.Location" Role="Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_State_0">
+          <End Type="ArmorAppModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="ArmorAppModel.State" Role="State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamilyServices_0">
+          <End Type="ArmorAppModel.Family" Role="Family" Multiplicity="1" />
+          <End Type="ArmorAppModel.FamilyService" Role="FamilyService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Family">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FamilyService">
+              <PropertyRef Name="FamilyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamilyServices_1">
+          <End Type="ArmorAppModel.ProviderServiceCategory" Role="ProviderServiceCategory" Multiplicity="1" />
+          <End Type="ArmorAppModel.FamilyService" Role="FamilyService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProviderServiceCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FamilyService">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvitesCreator_0">
+          <End Type="ArmorAppModel.User" Role="User" Multiplicity="1" />
+          <End Type="ArmorAppModel.Invite" Role="Invite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invite">
+              <PropertyRef Name="CreatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvitesRole_0">
+          <End Type="ArmorAppModel.RoleType" Role="RoleType" Multiplicity="1" />
+          <End Type="ArmorAppModel.Invite" Role="Invite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invite">
+              <PropertyRef Name="RoleTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_0">
+          <End Type="ArmorAppModel.State" Role="State" Multiplicity="1" />
+          <End Type="ArmorAppModel.Location" Role="Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_2">
+          <End Type="ArmorAppModel.ServiceProvider" Role="ServiceProvider" Multiplicity="1" />
+          <End Type="ArmorAppModel.Location" Role="Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceProvider">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="ProviderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProviderCoverage_0">
+          <End Type="ArmorAppModel.Location" Role="Location" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ArmorAppModel.ProviderCoverage" Role="ProviderCoverage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProviderCoverage">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProviderServices_1">
+          <End Type="ArmorAppModel.ProviderServiceCategory" Role="ProviderServiceCategory" Multiplicity="1" />
+          <End Type="ArmorAppModel.ProviderService" Role="ProviderService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProviderServiceCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProviderService">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProviderServices_0">
+          <End Type="ArmorAppModel.ServiceProvider" Role="ServiceProvider" Multiplicity="1" />
+          <End Type="ArmorAppModel.ProviderService" Role="ProviderService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceProvider">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProviderService">
+              <PropertyRef Name="ProviderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleRole_0">
+          <End Type="ArmorAppModel.RoleType" Role="RoleType" Multiplicity="1" />
+          <End Type="ArmorAppModel.UserRole" Role="UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="RoleTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceProvider_0">
+          <End Type="ArmorAppModel.ServiceType" Role="ServiceType" Multiplicity="1" />
+          <End Type="ArmorAppModel.ServiceProvider" Role="ServiceProvider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ServiceProvider">
+              <PropertyRef Name="ServiceTypes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceProviderEditsProviderId_0">
+          <End Type="ArmorAppModel.ServiceProvider" Role="ServiceProvider" Multiplicity="0..1" />
+          <End Type="ArmorAppModel.ServiceProviderEdit" Role="ServiceProviderEdit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceProvider">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ServiceProviderEdit">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserServiceProvider_0">
+          <End Type="ArmorAppModel.ServiceProvider" Role="ServiceProvider" Multiplicity="0..1" />
+          <End Type="ArmorAppModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceProvider">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ServiceProviderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceProviderEditsUser_0">
+          <End Type="ArmorAppModel.User" Role="User" Multiplicity="1" />
+          <End Type="ArmorAppModel.ServiceProviderEdit" Role="ServiceProviderEdit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ServiceProviderEdit">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserCredential_0">
+          <End Type="ArmorAppModel.UserCredential" Role="UserCredential" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ArmorAppModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserCredential">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CredentialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleUser_0">
+          <End Type="ArmorAppModel.User" Role="User" Multiplicity="1" />
+          <End Type="ArmorAppModel.UserRole" Role="UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ArmorAppModelStoreContainer" CdmEntityContainer="ArmorAppEntities">
+          <EntitySetMapping Name="ServiceProviderEdits">
+            <EntityTypeMapping TypeName="ArmorAppModel.ServiceProviderEdit">
+              <MappingFragment StoreEntitySet="ServiceProviderEdits">
+                <ScalarProperty Name="DeletedProviderName" ColumnName="DeletedProviderName" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryTypes">
+            <EntityTypeMapping TypeName="ArmorAppModel.CategoryType">
+              <MappingFragment StoreEntitySet="CategoryTypes">
+                <ScalarProperty Name="ServiceTypeId" ColumnName="ServiceTypeId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="ArmorAppModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="HelpLine" ColumnName="HelpLine" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactPersons">
+            <EntityTypeMapping TypeName="ArmorAppModel.ContactPerson">
+              <MappingFragment StoreEntitySet="ContactPerson">
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Counties">
+            <EntityTypeMapping TypeName="ArmorAppModel.County">
+              <MappingFragment StoreEntitySet="Counties">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="ArmorAppModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CrisisContacts">
+            <EntityTypeMapping TypeName="ArmorAppModel.CrisisContact">
+              <MappingFragment StoreEntitySet="CrisisContact">
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Families">
+            <EntityTypeMapping TypeName="ArmorAppModel.Family">
+              <MappingFragment StoreEntitySet="Family">
+                <ScalarProperty Name="SpecialPopulation" ColumnName="SpecialPopulation" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FamilyServices">
+            <EntityTypeMapping TypeName="ArmorAppModel.FamilyService">
+              <MappingFragment StoreEntitySet="FamilyServices">
+                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+                <ScalarProperty Name="FamilyID" ColumnName="FamilyID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invites">
+            <EntityTypeMapping TypeName="ArmorAppModel.Invite">
+              <MappingFragment StoreEntitySet="Invites">
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="RoleTypeID" ColumnName="RoleTypeID" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="ArmorAppModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ContactPersonID" ColumnName="ContactPersonID" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="Display" ColumnName="Display" />
+                <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProviderCoverages">
+            <EntityTypeMapping TypeName="ArmorAppModel.ProviderCoverage">
+              <MappingFragment StoreEntitySet="ProviderCoverage">
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProviderServiceCategories">
+            <EntityTypeMapping TypeName="ArmorAppModel.ProviderServiceCategory">
+              <MappingFragment StoreEntitySet="ProviderServiceCategories">
+                <ScalarProperty Name="Crime" ColumnName="Crime" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProviderServices">
+            <EntityTypeMapping TypeName="ArmorAppModel.ProviderService">
+              <MappingFragment StoreEntitySet="ProviderServices">
+                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+                <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleTypes">
+            <EntityTypeMapping TypeName="ArmorAppModel.RoleType">
+              <MappingFragment StoreEntitySet="RoleTypes">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceProviders">
+            <EntityTypeMapping TypeName="ArmorAppModel.ServiceProvider">
+              <MappingFragment StoreEntitySet="ServiceProvider">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ServiceTypes" ColumnName="ServiceTypes" />
+                <ScalarProperty Name="DisplayRank" ColumnName="DisplayRank" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceTypes">
+            <EntityTypeMapping TypeName="ArmorAppModel.ServiceType">
+              <MappingFragment StoreEntitySet="ServiceTypes">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="ArmorAppModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tools">
+            <EntityTypeMapping TypeName="ArmorAppModel.Tool">
+              <MappingFragment StoreEntitySet="Tools">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="GooglePlayWebsite" ColumnName="GooglePlayWebsite" />
+                <ScalarProperty Name="AppleStoreWebsite" ColumnName="AppleStoreWebsite" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ArmorAppModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ServiceProviderID" ColumnName="ServiceProviderID" />
+                <ScalarProperty Name="PrimaryProviderCategoryID" ColumnName="PrimaryProviderCategoryID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="CredentialID" ColumnName="CredentialID" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserCredentials">
+            <EntityTypeMapping TypeName="ArmorAppModel.UserCredential">
+              <MappingFragment StoreEntitySet="UserCredential">
+                <ScalarProperty Name="ResetToken" ColumnName="ResetToken" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="ArmorAppModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="RoleTypeID" ColumnName="RoleTypeID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

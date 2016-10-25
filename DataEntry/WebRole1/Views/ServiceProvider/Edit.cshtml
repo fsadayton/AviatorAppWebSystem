@@ -1,0 +1,43 @@
+﻿@using System.Web.Mvc.Html
+@model Models.WebsiteServiceProvider
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    Html.RenderPartial("ServiceProviderForm", Model);
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="row">
+
+                <div class="col-sm-offset-1 col-sm-1">
+                    @if (User.IsInRole("1"))
+                    {
+                        @Html.ActionLink("Cancel", "Index", null, new {@class = "btn btn-primary"})
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Cancel", "Details", new { id =  Model.Id }, new { @class = "btn btn-primary" })
+                    }
+                </div>
+                <div class="col-sm-offset-8 col-sm-1">
+                    <input type="submit" value="Save" class="btn btn-primary buttonProvider" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/dataEntry")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            serviceProviderPageSetup();
+        });
+    </script>
+}

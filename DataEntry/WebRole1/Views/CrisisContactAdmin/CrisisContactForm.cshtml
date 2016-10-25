@@ -1,0 +1,22 @@
+﻿
+@using System.Web.Mvc.Html
+@model Website.Models.CrisisContactDisplay
+
+
+<div class="form-horizontal">
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-3 required" })
+        <div class="col-md-8">
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label col-md-3 required" })
+        <div class="col-md-8">
+            @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>

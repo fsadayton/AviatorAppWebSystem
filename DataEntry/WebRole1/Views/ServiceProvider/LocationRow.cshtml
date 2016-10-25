@@ -1,0 +1,6 @@
+﻿@using Website.Helpers
+@model Models.ServiceProviderLocation
+@using (Html.BeginCollectionItem("locations"))
+{
+    @Html.EditorFor(model => model)
+}

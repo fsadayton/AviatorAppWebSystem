@@ -1,0 +1,81 @@
+﻿﻿﻿@model System.Collections.Generic.IEnumerable<Website.Models.DisplayServiceProvider>
+@{
+    ViewBag.Title = "LCProviderList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section TitleSection {
+
+    <div id="aviatorlandingheader">
+        <div class="col-md-offset-2 col-md-8">
+            <center><h1 id="landingpgTitle">Law & Corrections</h1></center>
+            <center><p id="aviatorDescription"><strong>Access information to local law enforcement, jails, courts and legal representation. Click on VINE (Victim Information Notification Everyday) to find and be alerted to any changes in the incarceration status of a perpetrator.</strong></p></center>
+        </div>
+    </div>
+}
+
+<div>
+    <div class="page-header clearfix page-header-fixed">
+        <div class="pull-left">
+            <h3 id="sectionName"></h3>
+        </div>
+        <a id="vineLink" href="https://vinelink.com/#/home" class="grey-tooltip confirmation" data-toggle="tooltip" data-placement="right" title="VINE (Victim Information and Notification Everyday)">Visit VINElink.com</a>
+        <div id="filterButton" class="pull-right btn btn-default" style="margin-top: 13px"><i class="fa fa-filter"></i> Filter
+        </div>
+    </div>
+    <div class="mapListWrapper">
+        <div class="mapImage">
+            <div id='myMap' style="position: relative; height: 300px;"></div>
+        </div>
+        <div class="mapList" style="height: 100%">
+            <div id="spinner" class="panel panel-default panel-spinner"><i class="fa fa-spinner fa-spin"></i>
+            </div>
+            <ul id="providerList" class="list-group"></ul>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="confirm-leave" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Disclaimer
+            </div>
+            <div class="modal-body">
+                Since this website is not directly affiliated with AVIATOR, Family Services of Dayton, Ohio 
+                is not responsible for the content on this 3rd party site.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <a id="leaveSiteButton" class="btn btn-default btn-ok">OK</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@Html.Partial("_ServiceProviderFilterPartial")
+@section Scripts {
+    @Scripts.Render("~/bundles/ServiceProviderSpecific")
+
+    <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+    <script language="javascript">
+      $(document).ready(function () {
+          serviceProviderDisplay.populate(getLCCategories, getLCProviderPath, getLCDetails);
+          $('.confirmation').on('click', function (e) {
+              e.preventDefault();
+              $('.confirmation').removeClass('clicked');
+              $(this).addClass('clicked');
+              $("#confirm-leave").modal('show');
+          });
+
+          $("#leaveSiteButton").click(function () {
+              window.open($('.clicked').attr('href'));
+              $("#confirm-leave").modal('hide');
+          });
+      });
+    </script>
+}

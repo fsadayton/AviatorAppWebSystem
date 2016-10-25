@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9de315c874004806bf31f8f6a7d5ca13" Name="Diagram1" ZoomLevel="73">
+        <EntityTypeShape EntityType="ArmorAppModel.CategoryType" Width="1.5" PointX="15" PointY="15" />
+        <EntityTypeShape EntityType="ArmorAppModel.Contact" Width="1.5" PointX="0.75" PointY="6.625" />
+        <EntityTypeShape EntityType="ArmorAppModel.ContactPerson" Width="1.5" PointX="3" PointY="12.5" />
+        <EntityTypeShape EntityType="ArmorAppModel.County" Width="1.5" PointX="5.25" PointY="19.75" />
+        <EntityTypeShape EntityType="ArmorAppModel.Country" Width="1.5" PointX="3" PointY="9.25" />
+        <EntityTypeShape EntityType="ArmorAppModel.CrisisContact" Width="1.5" PointX="3" PointY="5.5" />
+        <EntityTypeShape EntityType="ArmorAppModel.Family" Width="1.5" PointX="9.75" PointY="17.875" />
+        <EntityTypeShape EntityType="ArmorAppModel.FamilyService" Width="1.5" PointX="12" PointY="13.875" />
+        <EntityTypeShape EntityType="ArmorAppModel.Invite" Width="1.5" PointX="11.25" PointY="6.625" />
+        <EntityTypeShape EntityType="ArmorAppModel.Location" Width="1.5" PointX="5.25" PointY="10.625" />
+        <EntityTypeShape EntityType="ArmorAppModel.ProviderCoverage" Width="1.5" PointX="7.5" PointY="11.75" />
+        <EntityTypeShape EntityType="ArmorAppModel.ProviderServiceCategory" Width="1.5" PointX="9.75" PointY="13.625" />
+        <EntityTypeShape EntityType="ArmorAppModel.ProviderService" Width="1.5" PointX="12" PointY="17.25" />
+        <EntityTypeShape EntityType="ArmorAppModel.RoleType" Width="1.5" PointX="9" PointY="4.125" />
+        <EntityTypeShape EntityType="ArmorAppModel.ServiceProvider" Width="1.5" PointX="3.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ArmorAppModel.ServiceType" Width="1.5" PointX="1.5" PointY="16.375" />
+        <EntityTypeShape EntityType="ArmorAppModel.State" Width="1.5" PointX="3" PointY="20" />
+        <EntityTypeShape EntityType="ArmorAppModel.Tool" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ArmorAppModel.User" Width="1.5" PointX="6" PointY="6.125" />
+        <EntityTypeShape EntityType="ArmorAppModel.UserCredential" Width="1.5" PointX="3.75" PointY="2.125" />
+        <EntityTypeShape EntityType="ArmorAppModel.UserRole" Width="1.5" PointX="8.25" PointY="7" />
+        <AssociationConnector Association="ArmorAppModel.FK_CategoryTypesCategory_0" />
+        <AssociationConnector Association="ArmorAppModel.FK_CategoryTypesServiceType_0" />
+        <AssociationConnector Association="ArmorAppModel.FK_ContactPerson_0" />
+        <AssociationConnector Association="ArmorAppModel.fk_crisisContact" />
+        <AssociationConnector Association="ArmorAppModel.FK_Location_0" />
+        <AssociationConnector Association="ArmorAppModel.FK_UserContact_0" />
+        <AssociationConnector Association="ArmorAppModel.FK_Location_1" />
+        <AssociationConnector Association="ArmorAppModel.FK_Counties_0" />
+        <AssociationConnector Association="ArmorAppModel.FK_ProviderCoverage_1" />
+        <AssociationConnector Association="ArmorAppModel.FK_Address_1" />
+        <AssociationConnector Association="ArmorAppModel.FK_State_0" />
+        <AssociationConnector Association="ArmorAppModel.FK_FamilyServices_0" />
+        <AssociationConnector Association="ArmorAppModel.FK_FamilyServices_1" />
+        <AssociationConnector Association="ArmorAppModel.FK_InvitesCreator_0" />
+        <AssociationConnector Association="ArmorAppModel.FK_InvitesRole_0" />
+        <AssociationConnector Association="ArmorAppModel.FK_Address_0" />
+        <AssociationConnector Association="ArmorAppModel.FK_Address_2" />
+        <AssociationConnector Association="ArmorAppModel.FK_ProviderCoverage_0" />
+        <AssociationConnector Association="ArmorAppModel.FK_ProviderServices_1" />
+        <AssociationConnector Association="ArmorAppModel.FK_ProviderServices_0" />
+        <AssociationConnector Association="ArmorAppModel.FK_UserRoleRole_0" />
+        <AssociationConnector Association="ArmorAppModel.FK_ServiceProvider_0" />
+        <AssociationConnector Association="ArmorAppModel.FK_UserServiceProvider_0" />
+        <AssociationConnector Association="ArmorAppModel.FK_UserCredential_0" />
+        <AssociationConnector Association="ArmorAppModel.FK_UserRoleUser_0" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

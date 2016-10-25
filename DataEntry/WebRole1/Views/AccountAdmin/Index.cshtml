@@ -1,0 +1,71 @@
+﻿@using Models.AccountManagement
+@model System.Collections.Generic.IEnumerable<Models.AccountManagement.AccountAdminViewModel>
+
+
+@if (this.TempData["Info"] != null)
+{
+    <div class="fade in flash-message">
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <i class="fa fa-check-circle"></i> @this.TempData["Info"]
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-11">
+        <h2>Users</h2>
+    </div>
+</div>
+
+<div class="clearfix">
+    <div class="pull-left">
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="Search"></label>@Html.TextBox("Search", "", new {@class = "form-control"})
+            </div>
+            <button type="button" id="searchBtn" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+    <div class="pull-right">
+        <a href="@Url.Action("Create", "Invite", new {userRoleType = (int) UserRoleType.Admin})"><strong>Invite New Admin</strong></a> &nbsp;|&nbsp;
+        <a href="@Url.Action("Create", "Invite", new {userRoleType = (int) UserRoleType.Provider})"><strong>Invite New Service Provider</strong></a>        
+    </div>
+</div>
+<br />
+<div id="searchSpinner" class="panel panel-default panel-spinner"><i class="fa fa-spinner fa-spin"></i></div>
+<div id="foundItems" class=""></div>
+
+<div class="modal fade" id="confirm-deactivate" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Deactivate a user. 
+            </div>
+            <div class="modal-body">
+                Are you sure you want to deactivate? 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a id="Deactivate"class="btn btn-danger btn-ok">Deactivate</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/Users")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            bindSearchButton();
+            //Hide any flash messages
+            setTimeout(function() {
+                $(".flash-message").fadeOut(1000);
+            }, 3000);
+    });
+    </script>
+}
+
+

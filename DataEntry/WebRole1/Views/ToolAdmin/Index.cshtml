@@ -1,0 +1,109 @@
+﻿@model IEnumerable<Website.Models.ToolViewModel>
+
+@{
+    ViewBag.Title = "Tools";
+}
+
+<div class="clearfix">
+    <div class="pull-left"><h2>@ViewBag.Title</h2></div>
+    <div class="pull-right">
+        <a href="@Url.Action("Create", "ToolAdmin")" class="headerButton">
+            <i class="fa fa-plus fa-medium"></i>
+        </a> @Html.ActionLink("Create New", "Create")
+    </div>
+</div>
+
+@foreach (var item in Model)
+    {
+       var classNames = (item.IsActive) ? "row" : "row warning";
+        <div class="@classNames" style="border-bottom: 1px solid grey; padding-top: 10px;padding-bottom: 10px;">
+            <div class="col-xs-10">
+                <h4 style="display: inline">@item.Name</h4>
+                @if (!item.IsActive)
+                {
+                    <span class="text-danger">  ( inactive )</span>
+                }
+                <div>@Html.DisplayFor(modelItem => item.Description)</div>
+                <div>
+                    @if (!string.IsNullOrEmpty(item.WebsiteUrl))
+                    {
+                        <strong><a href="@Html.DisplayFor(modelItem => item.WebsiteUrl)" target="_blank">Website</a></strong>
+                         if (!string.IsNullOrEmpty(item.GooglePlayStore) || !string.IsNullOrEmpty(item.AppleStore))
+                         {
+                             <span> | </span>
+                         }
+                    }
+
+                    @if (!string.IsNullOrEmpty(item.AppleStore))
+                    {
+                        <strong><a href="@Html.DisplayFor(modelItem => item.AppleStore)" target="_blank">Apple App Store</a></strong>
+                        if (!string.IsNullOrEmpty(item.GooglePlayStore))
+                         {
+                             <span> | </span>
+                         }
+                    }
+
+                    @if (!string.IsNullOrEmpty(item.GooglePlayStore))
+                    {
+                        <strong><a href="@Html.DisplayFor(modelItem => item.GooglePlayStore)" target="_blank">Google Play Store</a></strong>
+                    }
+                </div>
+            </div>
+            <div class="col-xs-2" style="margin-top: 10px; text-align: right">
+                <span class="link" style="padding: 10px;" data-href="@Url.Action("Delete", new {id = item.Id})" data-toggle="modal" data-target="#confirm-delete" data-name="@item.Name"><i class="fa fa-trash fa-medium"></i></span>
+                <a href="@Url.Action("Edit", new {item.Id})" class=""><i class="fa fa-edit fa-medium"></i></a>
+            </div>
+        </div>
+    }
+
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Remove Service Provider
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this tool? It will be removed permanently.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a id="deleteToolrButton" class="btn btn-danger btn-ok">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/dataEntry")
+    <script type="text/javascript">
+        $(document).ready(function () {
+        
+            $("#confirm-delete").on("show.bs.modal", function (e) {
+                bindDelete(e);
+            });
+
+            /* Summary: Bind the delete contract button in the modal */
+            function bindDelete(e) {
+                console.log($(e.relatedTarget).data("href"));
+                $("#deleteToolrButton").click(function () {
+                    $("#deleteToolrButton").hide();
+                    $.ajax({
+                        cache: false,
+                        type: 'GET',
+                        url: $(e.relatedTarget).data("href"),
+                        success: function (data) {
+                            location.reload();
+                        }
+                    });
+                    $("#deleteToolrButton").show();
+                    $("#confirm-delete").hide();
+                });
+            }
+
+
+        });
+    </script>
+
+}
+
+

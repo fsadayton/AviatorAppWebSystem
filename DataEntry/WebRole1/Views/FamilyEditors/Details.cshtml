@@ -1,0 +1,74 @@
+﻿@model Website.Models.FamilyEditor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <div class="clearfix">
+        <div class="pull-left">
+            <h4>@Model.Name</h4>
+        </div>
+        <div class="pull-right">
+            @if (Model.IsSpecialPopulation)
+            {
+                <object type="image/svg+xml" data="~/Content/Images/disabled8.svg" class="inlinePicture"></object>
+                <span>Special Population</span>
+            }
+            else
+            {
+                <object type="image/svg+xml" data="~/Content/Images/familiar17.svg" class="inlinePicture"></object>
+                <span>Personal Resources</span>
+            }
+        </div>
+        </div>
+
+        <hr/>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<h4>Sub-categories</h4>
+
+@foreach (var category in ViewBag.AllCategories)
+{
+    if (Model.CategoryIds.Contains(category.Id)) 
+    {
+        <div class="row">
+            <div class="col-md-4">@category.Name</div>
+            <div class="col-md-8">@category.Description</div>
+        </div>
+    <p></p>
+    }
+}
+          

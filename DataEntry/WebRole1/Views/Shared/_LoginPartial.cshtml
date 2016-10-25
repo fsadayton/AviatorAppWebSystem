@@ -1,0 +1,35 @@
+﻿
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li ><a class="differentCounty"><i href="#" class="fa fa-map-marker"> </i> <span class="nameCounty"></span> <i class="fa fa-caret-down"></i> </a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administration</a>
+                <ul class="dropdown-menu">
+                    @if (User.IsInRole("1"))
+                    {
+                        <li>@Html.ActionLink("Control Panel", "Index", "Administration")</li>
+                        <li>@Html.ActionLink("Reports", "Index", "ProviderActivity")</li>
+                        <li>@Html.ActionLink("Invite Admin", "Index", "Invite")</li>
+                    }
+                    @if (User.IsInRole("2") && ViewBag.ServiceProviderId != null)
+                    {
+                        <li>@Html.ActionLink("Edit your organization's info", "Edit", "ServiceProvider", new {id = ViewBag.ServiceProviderId.ToString()}, null)</li>
+                    }
+                </ul>
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li><a class="differentCounty"><i href="#" class="fa fa-map-marker"> </i> <span class="nameCounty"></span> <i class="fa fa-caret-down"></i></a></li>
+        <li><a href="#" data-toggle="modal" data-target="#loginModal" id="login">Login</a></li>
+    </ul>
+}

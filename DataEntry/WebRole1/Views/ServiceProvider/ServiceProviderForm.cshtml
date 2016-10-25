@@ -1,0 +1,119 @@
+﻿@using System.Web.Mvc.Html
+@model Models.WebsiteServiceProvider
+
+
+<div class="form-horizontal">
+    <div class="clearfix">
+        <div class="pull-left">
+            <h2>@(Model.Name ?? "New Service Provider")</h2>
+        </div>
+        @{
+            var showClass = (User.IsInRole("1") ? "" : "hide");
+}
+            <div class="toggle-switch-inline @showClass">
+                @Html.EditorFor(model => model.IsActive, new {htmlAttributes = new {@class = "toggle-switch toggle-switch-round"}})
+                @Html.LabelFor(model => model.IsActive, new {dataOn = "Show", dataOff = "Hide"})
+            </div>
+    </div>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div><span class="required">(</span> indicates a required field)</div>
+    <div class="clearfix form-group">
+        @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-3 required" })
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-3 required" })
+        <div class="col-md-8">
+            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "3" })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+ 
+    <div class="form-group">
+        <div class="dropdown">
+            @Html.LabelFor(model => model.Type, new { @class = "control-label col-md-3" })
+            <div class="col-md-8">
+                @Html.DropDownListFor(model => model.Type, (IEnumerable<SelectListItem>)ViewBag.types, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.DisplayRank, "Display Priority", new { @class = "control-label col-md-3" })
+        <div class="col-md-8">
+            <div class="rankGrouping">
+                <span id="rank1" class="ranking fa fa-star-o"></span>
+                <span id="rank2" class="ranking fa fa-star-o"></span>
+                <span id="rank3" class="ranking fa fa-star-o"></span>
+                <label id="rankDescription"></label>
+            </div>
+            @Html.EditorFor(model => model.DisplayRank, new { htmlAttributes = new { @class = "form-control hidden" } })
+            @Html.ValidationMessageFor(model => model.DisplayRank, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Services.ServiceAreas, "Categories", new { @class = "control-label col-md-3 required" })
+        <div class="col-md-8">
+            <div id="categoriesList" class="panel panel-default panel-categories">
+                <div id="selectedCategories"></div>
+                @Html.ValidationMessageFor(model => model.Services, "", new { @class = "text-danger" })
+                <div id="noCategories" class="alert alert-danger">
+                    <i class="fa fa-exclamation-circle"></i> No categories have been selected.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="categoriesModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Categories</h4>
+                </div>
+                <div id="modal-body" class="modalBody">
+
+                    @foreach (var category in ViewBag.AllCategories)
+                    {
+
+                        var classList = string.Empty;
+                        foreach (var curType in category.ServiceTypes)
+                        {
+                            classList = classList + " serviceType" + curType.Id;
+                        }
+
+                        <div class="row categoryRow @classList" id="categoryRow_@category.Id">
+                            <div class="col-md-4">
+                                <input type="checkbox" id="category_@category.Id" value="@category.Id" name="Services.ServiceAreas" @( Model.Services.ServiceAreas.Contains(category.Id) ? "checked" : "") />
+                                <span><strong>@category.Name</strong></span>
+                            </div>
+                            <div class="col-md-8 categoryDesc">
+                                @category.Description
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="LocationFields">
+    @foreach (var item in Model.Locations)
+    {
+        Html.RenderPartial("LocationRow", item);
+    }
+</div>
+@Html.ActionLink("Add another location...", "AddBlankLocation", null, new { id = "addLocation" })
+<br />
+<br />
